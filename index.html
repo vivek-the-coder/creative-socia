@@ -96,6 +96,10 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- GSAP 3.12 & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -144,7 +148,7 @@
 
         /* Accordion transition utility */
         .faq-answer {
-            transition: max-height 250ms ease-in-out, opacity 200ms ease-in-out;
+            transition: max-height 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 250ms ease-in-out;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
@@ -154,14 +158,18 @@
             opacity: 1;
         }
 
-        /* Brand Logo Interactive Badge */
+        /* Brand Logo Interactive Badge & Grayscale Hover */
         .brand-badge {
             cursor: pointer;
             touch-action: manipulation;
-            transition: transform 0.2s ease, filter 0.2s ease;
+            filter: grayscale(100%);
+            opacity: 0.65;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease, opacity 0.3s ease;
         }
         .brand-badge:hover {
             transform: scale(1.08);
+            filter: grayscale(0%);
+            opacity: 1;
         }
 
         /* Smooth Infinite Marquee Animation */
@@ -173,18 +181,71 @@
         .marquee-track {
             display: flex;
             width: max-content;
-            animation: marquee 22s linear infinite;
+            animation: marquee 24s linear infinite;
         }
 
         .marquee-container:hover .marquee-track {
             animation-play-state: paused;
+        }
+
+        /* Animated Underline Links */
+        .animated-link {
+            position: relative;
+            display: inline-block;
+        }
+        .animated-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .animated-link:hover::after {
+            width: 100%;
+        }
+
+        /* Initial State for GSAP Reveal (Prevents FOUT/FLASHER) */
+        .hero-stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(8px);
+            will-change: opacity, transform, filter;
+        }
+
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            filter: blur(10px);
+            will-change: opacity, transform, filter;
+        }
+
+        .gsap-video-reveal {
+            opacity: 0;
+            transform: scale(1.06);
+            clip-path: inset(4% 4% 4% 4%);
+            will-change: opacity, transform, clip-path;
+        }
+
+        /* Watermark Background Typography */
+        .watermark-text {
+            font-size: clamp(5rem, 15vw, 16rem);
+            font-weight: 800;
+            color: #111215;
+            opacity: 0.03;
+            user-select: none;
+            pointer-events: none;
+            line-height: 0.8;
+            letter-spacing: -0.05em;
         }
     </style>
 </head>
 <body class="selection:bg-studio-accent selection:text-white relative min-h-screen">
 
     <!-- Mobile First Top Navigation Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#F6F4EF]/95 backdrop-blur-sm border-b border-studio-border/60" id="header">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#F6F4EF]/95 backdrop-blur-md border-b border-studio-border/60 hero-stagger-item" id="header">
         <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
             
             <!-- Logo Integration -->
@@ -199,16 +260,16 @@
 
             <!-- Desktop Primary Navigation Links -->
             <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-sm font-normal text-studio-muted">
-                <a href="#work" class="hover:text-studio-text transition-colors">Work</a>
-                <a href="#capabilities" class="hover:text-studio-text transition-colors">What We Do</a>
-                <a href="#stories" class="hover:text-studio-text transition-colors">Case Notes</a>
-                <a href="#process" class="hover:text-studio-text transition-colors">Process</a>
-                <a href="#faq" class="hover:text-studio-text transition-colors">FAQ</a>
+                <a href="#work" class="animated-link hover:text-studio-text transition-colors">Work</a>
+                <a href="#capabilities" class="animated-link hover:text-studio-text transition-colors">What We Do</a>
+                <a href="#stories" class="animated-link hover:text-studio-text transition-colors">Case Notes</a>
+                <a href="#process" class="animated-link hover:text-studio-text transition-colors">Process</a>
+                <a href="#faq" class="animated-link hover:text-studio-text transition-colors">FAQ</a>
             </nav>
 
             <!-- Direct Action CTA & Touch Hamburger Menu -->
             <div class="flex items-center gap-3 sm:gap-4">
-                <button onclick="toggleInquiryModal()" class="px-3.5 sm:px-5 py-2 sm:py-2.5 bg-studio-text text-white hover:bg-studio-accent text-xs sm:text-sm font-medium rounded-none shadow-sm transition-colors">
+                <button onclick="toggleInquiryModal()" class="px-3.5 sm:px-5 py-2 sm:py-2.5 bg-studio-text text-white hover:bg-studio-accent hover:-translate-y-0.5 text-xs sm:text-sm font-medium rounded-none shadow-sm hover:shadow-md transition-all duration-200">
                     Book Call
                 </button>
                 <button onclick="toggleMobileMenu()" class="md:hidden text-studio-text text-xl p-2 rounded-none focus:outline-none" aria-label="Toggle Navigation Menu">
@@ -232,32 +293,39 @@
         </div>
     </header>
 
-    <!-- SCENE 1: MOBILE FIRST HERO SPREAD -->
-    <section class="relative pt-24 sm:pt-36 lg:pt-40 pb-16 sm:pb-28 lg:pb-32">
-        <div class="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- SCENE 1: MOBILE FIRST HERO SPREAD WITH STAGGER TIMELINE -->
+    <section class="relative pt-24 sm:pt-36 lg:pt-40 pb-16 sm:pb-28 lg:pb-32 overflow-hidden" id="hero-section">
+        
+        <!-- Watermark Background Word -->
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 watermark-text select-none z-0" id="hero-watermark">
+            PRODUCE
+        </div>
+
+        <div class="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 hero-cursor-wrapper">
             
             <div class="space-y-6 sm:space-y-8">
                 
-                <div class="flex items-center gap-2.5 sm:gap-3 flex-wrap">
+                <div class="hero-stagger-item flex items-center gap-2.5 sm:gap-3 flex-wrap">
                     <img src="socia-logo-onlys.png" alt="SOCIA Mark" class="h-4 sm:h-5 w-auto object-contain">
                     <span class="text-xs sm:text-sm font-normal text-studio-muted">SOCIA Creative Agency · Paid Media & Reel Production · Vadodara & Ahmedabad</span>
                 </div>
 
-                <h1 class="text-3xl sm:text-5xl lg:text-7xl font-semibold leading-[1.12] sm:leading-[1.08] text-studio-text tracking-tight max-w-4xl break-words">
-                    We shoot. We advertise. <br class="hidden sm:inline">
-                    We measure what happens next.
+                <!-- Line-by-Line Magazine Headline Reveal -->
+                <h1 class="hero-stagger-item text-3xl sm:text-5xl lg:text-7xl font-semibold leading-[1.12] sm:leading-[1.08] text-studio-text tracking-tight max-w-4xl break-words">
+                    <span class="block">We shoot. We advertise.</span>
+                    <span class="block text-studio-accent">We measure what happens next.</span>
                 </h1>
 
-                <p class="text-sm sm:text-lg lg:text-xl text-studio-muted max-w-3xl leading-relaxed font-normal">
+                <p class="hero-stagger-item text-sm sm:text-lg lg:text-xl text-studio-muted max-w-3xl leading-relaxed font-normal">
                     One team for video production, media buying, and growth reporting for consumer brands across Gujarat. We build targeted Meta and Google campaigns that drive offline footfalls and verified online orders.
                 </p>
 
                 <!-- Action Links - Responsive Stack -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 pt-2 text-sm font-medium">
-                    <button onclick="toggleInquiryModal()" class="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-studio-text text-white hover:bg-studio-accent rounded-none shadow-md text-center">
+                <div class="hero-stagger-item flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 pt-2 text-sm font-medium">
+                    <button onclick="toggleInquiryModal()" class="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-studio-text text-white hover:bg-studio-accent hover:-translate-y-0.5 rounded-none shadow-md hover:shadow-lg transition-all duration-200 text-center">
                         Book Strategy Call
                     </button>
-                    <a href="#work" class="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-white border border-studio-border text-studio-text hover:bg-studio-surface rounded-none flex items-center justify-center gap-2 text-center">
+                    <a href="#work" class="w-full sm:w-auto px-8 py-3.5 sm:py-4 bg-white border border-studio-border text-studio-text hover:bg-studio-surface hover:-translate-y-0.5 rounded-none flex items-center justify-center gap-2 text-center transition-all duration-200">
                         <span>Explore Work</span>
                         <span class="text-studio-accent">↓</span>
                     </a>
@@ -266,7 +334,7 @@
             </div>
 
             <!-- Live Active Campaign Stats Bar -->
-            <div class="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-studio-border/60 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs sm:text-sm font-normal text-studio-muted">
+            <div class="hero-stagger-item mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-studio-border/60 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs sm:text-sm font-normal text-studio-muted">
                 <div class="flex items-center gap-2 shrink-0">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
                     <span class="font-medium text-studio-text">Active Studio Campaigns</span>
@@ -279,7 +347,7 @@
             </div>
 
             <!-- Moving Infinite Client Brand Logo Marquee -->
-            <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-studio-border/60">
+            <div class="hero-stagger-item mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-studio-border/60">
                 <div class="text-[11px] sm:text-xs text-studio-dim font-medium uppercase tracking-wider mb-4">Trusted by Regional & National Consumer Brands</div>
                 <div class="marquee-container overflow-hidden relative w-full py-2">
                     <div class="marquee-track flex items-center">
@@ -308,11 +376,17 @@
         </div>
     </section>
 
-    <!-- SCENE 2: FEATURED CAMPAIGN SPOTLIGHT (Responsive Layout) -->
-    <section class="py-16 sm:py-28 lg:py-32 bg-white relative">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
+    <!-- SCENE 2: FEATURED CAMPAIGN SPOTLIGHT (STICKY STORYTELLING & CLIP-PATH REVEAL) -->
+    <section class="py-16 sm:py-28 lg:py-32 bg-white relative overflow-hidden" id="spotlight-section">
+        
+        <!-- Background Watermark -->
+        <div class="absolute top-10 right-5 watermark-text select-none z-0">
+            SPOTLIGHT
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12 relative z-10">
             
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 sm:pb-4 border-b border-studio-border/40">
+            <div class="gsap-reveal flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 sm:pb-4 border-b border-studio-border/40">
                 <div class="flex items-center gap-3">
                     <img src="jantaicecreamslogo.png" alt="Janta Ice Cream Logo" onclick="inspectCampaign('SC-01')" class="brand-badge h-7 sm:h-8 w-auto object-contain">
                     <span class="text-xs sm:text-sm font-normal text-studio-muted">Featured Campaign Spotlight</span>
@@ -320,11 +394,11 @@
                 <div class="text-xs sm:text-sm font-normal text-studio-muted">Janta Ice Cream — Vadodara & Ahmedabad</div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
                 
-                <!-- 9:16 Native Video Reel Player Tile -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[380px] aspect-[9/16] bg-black rounded-none overflow-hidden group shadow-2xl">
+                <!-- Sticky Video Reel Player Tile (Apple Tier Clip-Path Reveal) -->
+                <div class="lg:col-span-5 flex justify-center lg:sticky lg:top-28">
+                    <div class="gsap-video-reveal relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[380px] aspect-[9/16] bg-black rounded-none overflow-hidden group shadow-2xl">
                         <video id="featured-campaign-video" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
                             <source src="jantaicecream.mp4" type="video/mp4">
                         </video>
@@ -332,7 +406,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 p-4 sm:p-5 flex flex-col justify-between text-white">
                             <div class="flex items-center justify-between">
                                 <span class="px-2.5 sm:px-3 py-1 bg-black/80 text-[11px] sm:text-xs font-normal text-emerald-400 border border-white/20 rounded-none">Captured on Location</span>
-                                <button onclick="toggleFeaturedSound()" class="w-8 h-8 rounded-none bg-black/70 border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black" title="Toggle Audio">
+                                <button onclick="toggleFeaturedSound()" class="w-8 h-8 rounded-none bg-black/70 border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors" title="Toggle Audio">
                                     <span id="featured-sound-icon" class="text-sm">🔇</span>
                                 </button>
                             </div>
@@ -346,16 +420,16 @@
                             </div>
                         </div>
 
-                        <button onclick="openLightbox('jantaicecream.mp4', 'Janta Ice Cream', 'Meta Ads • Retail Footfalls')" class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-studio-accent text-white flex items-center justify-center text-sm hover:bg-studio-accentHover" title="Watch Fullscreen">
+                        <button onclick="openLightbox('jantaicecream.mp4', 'Janta Ice Cream', 'Meta Ads • Retail Footfalls')" class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-studio-accent text-white flex items-center justify-center text-sm hover:bg-studio-accentHover transition-colors" title="Watch Fullscreen">
                             ⛶
                         </button>
                     </div>
                 </div>
 
                 <!-- Magazine Editorial Story Breakdown -->
-                <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+                <div class="lg:col-span-7 space-y-6 sm:space-y-10">
                     
-                    <div class="space-y-3">
+                    <div class="gsap-reveal space-y-3">
                         <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-studio-text leading-tight">
                             Scaling Outlet Footfalls & D2C Delivery Boxes
                         </h2>
@@ -364,8 +438,8 @@
                         </p>
                     </div>
 
-                    <!-- Verified Proof Table - Mobile Responsive Grid -->
-                    <div class="py-5 sm:py-6 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-sm font-normal bg-studio-bg p-4 sm:p-6 rounded-none">
+                    <!-- Number Counter Grid -->
+                    <div class="gsap-reveal py-6 sm:py-8 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-sm font-normal bg-studio-bg p-5 sm:p-7 rounded-none border border-studio-border/50">
                         <div>
                             <div class="text-studio-dim text-xs">Sector</div>
                             <div class="text-studio-text font-medium mt-1 text-sm sm:text-base">Food & FMCG</div>
@@ -376,18 +450,18 @@
                         </div>
                         <div>
                             <div class="text-studio-dim text-xs">Outlet Reach</div>
-                            <div class="text-studio-text font-medium mt-1 text-sm sm:text-base">1.4M Regional</div>
+                            <div class="counter-stat text-studio-text font-semibold mt-1 text-base sm:text-xl" data-target="1.4" data-suffix="M Reach" data-decimals="1">0</div>
                             <span class="text-[10px] text-emerald-700 font-medium block mt-0.5">[Verified · Meta Ads]</span>
                         </div>
                         <div>
                             <div class="text-studio-dim text-xs">Verified Visits</div>
-                            <div class="text-studio-accent font-medium mt-1 text-sm sm:text-base">42,000+ Visits</div>
+                            <div class="counter-stat text-studio-accent font-semibold mt-1 text-base sm:text-xl" data-target="42000" data-suffix="+ Visits" data-decimals="0">0</div>
                             <span class="text-[10px] text-emerald-700 font-medium block mt-0.5">[Verified · QR Scans]</span>
                         </div>
                     </div>
 
                     <!-- Editorial Quote -->
-                    <blockquote class="italic text-base sm:text-lg lg:text-xl text-neutral-800 border-l-2 border-studio-accent pl-4 sm:pl-5 py-2 leading-relaxed font-normal">
+                    <blockquote class="gsap-reveal italic text-base sm:text-lg lg:text-xl text-neutral-800 border-l-2 border-studio-accent pl-4 sm:pl-6 py-2 leading-relaxed font-normal">
                         "SOCIA transformed our summer campaign completely. Store footfalls jumped 3x within 30 days of launching our vernacular reel ad creative."
                     </blockquote>
 
@@ -399,8 +473,14 @@
     </section>
 
     <!-- EDITORIAL BREAK SCENE: OVERSIZED STATEMENT -->
-    <section class="py-16 sm:py-28 lg:py-32 bg-studio-bg relative">
-        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6">
+    <section class="py-16 sm:py-28 lg:py-32 bg-studio-bg relative overflow-hidden">
+        
+        <!-- Watermark Background Word -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 watermark-text select-none z-0">
+            MEASURE
+        </div>
+
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6 relative z-10 gsap-reveal">
             <div class="text-xs sm:text-sm text-studio-accent font-medium tracking-wider uppercase">[SOCIA CREATIVE STATEMENT]</div>
             <p class="text-xl sm:text-3xl lg:text-5xl font-normal leading-relaxed sm:leading-tight text-studio-text max-w-4xl mx-auto">
                 "Paid media that brings customers into physical stores and verified online checkouts—not just numbers on a screen."
@@ -408,11 +488,11 @@
         </div>
     </section>
 
-    <!-- SCENE 3: CAMPAIGN DIRECTORY (Diverse Multi-Template Cards) -->
-    <section id="work" class="py-16 sm:py-28 bg-studio-bg relative">
+    <!-- SCENE 3: CAMPAIGN DIRECTORY -->
+    <section id="work" class="py-16 sm:py-28 bg-studio-bg relative overflow-hidden">
         <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
             
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div class="gsap-reveal flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div class="space-y-2">
                     <div class="text-xs sm:text-sm font-normal text-studio-muted">[Selected Campaigns]</div>
                     <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-studio-text">
@@ -449,10 +529,11 @@
     </section>
 
     <!-- CASE STORIES (Narrative Column max-w-[1040px]) -->
-    <section id="stories" class="py-16 sm:py-28 bg-white relative">
-        <div class="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
+    <section id="stories" class="py-16 sm:py-28 bg-white relative overflow-hidden">
+        
+        <div class="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12 relative z-10">
             
-            <div class="space-y-2">
+            <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-studio-text">
                     Three campaigns worth seeing.
                 </h2>
@@ -461,7 +542,7 @@
             <div class="space-y-8 sm:space-y-10">
                 
                 <!-- Story 1: Wagh Bakri Tea -->
-                <div class="bg-studio-bg p-6 sm:p-10 space-y-6">
+                <div class="gsap-reveal bg-studio-bg p-6 sm:p-10 space-y-6 border border-studio-border/40">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm font-normal">
                         <div class="flex items-center gap-3">
                             <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Logo" onclick="inspectCampaign('SC-02')" class="brand-badge h-7 sm:h-8 w-auto object-contain">
@@ -484,12 +565,12 @@
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs">Impressions</div>
-                                    <div class="text-studio-text font-medium mt-1">3.2M Reach</div>
+                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="3.2" data-suffix="M Reach" data-decimals="1">0</div>
                                     <span class="text-[9px] sm:text-[10px] text-emerald-700 font-medium block">[Verified · Meta]</span>
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs">Result</div>
-                                    <div class="text-studio-accent font-medium mt-1">28,000+ Orders</div>
+                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="28000" data-suffix="+ Orders" data-decimals="0">0</div>
                                     <span class="text-[9px] sm:text-[10px] text-emerald-700 font-medium block">[Verified · GA4]</span>
                                 </div>
                             </div>
@@ -497,7 +578,7 @@
 
                         <div class="lg:col-span-4 flex justify-center">
                             <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('waghbakrigroups.mp4', 'Wagh Bakri Tea', 'Vernacular Video Reach')">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                                <video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoplay loop muted playsinline preload="auto">
                                     <source src="waghbakrigroups.mp4" type="video/mp4">
                                 </video>
                                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
@@ -509,7 +590,7 @@
                 </div>
 
                 <!-- Story 2: Kheteshwar Sweets -->
-                <div class="bg-studio-bg p-6 sm:p-10 space-y-6">
+                <div class="gsap-reveal bg-studio-bg p-6 sm:p-10 space-y-6 border border-studio-border/40">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm font-normal">
                         <div class="flex items-center gap-3">
                             <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets Logo" onclick="inspectCampaign('SC-03')" class="brand-badge h-7 sm:h-8 w-auto object-contain">
@@ -532,18 +613,18 @@
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs">Impressions</div>
-                                    <div class="text-studio-text font-medium mt-1">2.1M Reach</div>
+                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="2.1" data-suffix="M Reach" data-decimals="1">0</div>
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs">Result</div>
-                                    <div class="text-studio-accent font-medium mt-1">18,000+ Gift Boxes</div>
+                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="18000" data-suffix="+ Gift Boxes" data-decimals="0">0</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="lg:col-span-4 flex justify-center">
                             <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('kheteshwarsweets.mp4', 'Kheteshwar Sweets', 'Festive Gift Box Campaign')">
-                                <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                                <video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoplay loop muted playsinline preload="auto">
                                     <source src="kheteshwarsweets.mp4" type="video/mp4">
                                 </video>
                                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
@@ -560,10 +641,16 @@
     </section>
 
     <!-- SCENE 4: CAPABILITIES DIRECTORY -->
-    <section id="capabilities" class="py-16 sm:py-28 bg-studio-bg relative">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
+    <section id="capabilities" class="py-16 sm:py-28 bg-studio-bg relative overflow-hidden">
+        
+        <!-- Watermark Background Word -->
+        <div class="absolute top-10 right-10 watermark-text select-none z-0">
+            SCALE
+        </div>
+
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12 relative z-10">
             
-            <div class="space-y-2">
+            <div class="gsap-reveal space-y-2">
                 <div class="text-xs sm:text-sm font-normal text-studio-muted">[What We Do]</div>
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-studio-text">
                     What We Do
@@ -573,7 +660,7 @@
             <!-- Numbered Directory Rows (Whitespace Separated Mobile Rows) -->
             <div class="divide-y divide-studio-border/60 font-normal">
                 
-                <div class="py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
+                <div class="gsap-reveal py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="md:col-span-2 text-sm sm:text-base text-studio-accent font-medium">01 / Acquire</div>
                     <div class="md:col-span-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-studio-text">Acquire Customers Online</h3>
@@ -584,7 +671,7 @@
                     </div>
                 </div>
 
-                <div class="py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
+                <div class="gsap-reveal py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="md:col-span-2 text-sm sm:text-base text-studio-accent font-medium">02 / Footfalls</div>
                     <div class="md:col-span-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-studio-text">Generate Store Visits</h3>
@@ -595,7 +682,7 @@
                     </div>
                 </div>
 
-                <div class="py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
+                <div class="gsap-reveal py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="md:col-span-2 text-sm sm:text-base text-studio-accent font-medium">03 / Production</div>
                     <div class="md:col-span-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-studio-text">Produce Vernacular Reels</h3>
@@ -606,7 +693,7 @@
                     </div>
                 </div>
 
-                <div class="py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
+                <div class="gsap-reveal py-6 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
                     <div class="md:col-span-2 text-sm sm:text-base text-studio-accent font-medium">04 / Launch</div>
                     <div class="md:col-span-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-studio-text">Launch Festive Campaigns</h3>
@@ -623,10 +710,10 @@
     </section>
 
     <!-- PROCESS METHODOLOGY TIMELINE -->
-    <section id="process" class="py-16 sm:py-28 bg-white relative">
+    <section id="process" class="py-16 sm:py-28 bg-white relative overflow-hidden">
         <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
             
-            <div class="space-y-2">
+            <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-studio-text">
                     Inside one launch.
                 </h2>
@@ -635,7 +722,7 @@
             <!-- Sequential Execution Framework - Responsive Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 text-sm font-normal">
                 
-                <div class="space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
+                <div class="gsap-reveal space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm">Step 01</div>
                     <h3 class="font-semibold text-base text-studio-text">Audit & Strategy</h3>
                     <p class="text-studio-muted text-sm leading-relaxed">
@@ -643,7 +730,7 @@
                     </p>
                 </div>
 
-                <div class="space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
+                <div class="gsap-reveal space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm">Step 02</div>
                     <h3 class="font-semibold text-base text-studio-text">Vernacular Reel Shoot</h3>
                     <p class="text-studio-muted text-sm leading-relaxed">
@@ -651,7 +738,7 @@
                     </p>
                 </div>
 
-                <div class="space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
+                <div class="gsap-reveal space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm">Step 03</div>
                     <h3 class="font-semibold text-base text-studio-text">Precision Setup</h3>
                     <p class="text-studio-muted text-sm leading-relaxed">
@@ -659,7 +746,7 @@
                     </p>
                 </div>
 
-                <div class="space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
+                <div class="gsap-reveal space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm">Step 04</div>
                     <h3 class="font-semibold text-base text-studio-text">Weekly A/B Scaling</h3>
                     <p class="text-studio-muted text-sm leading-relaxed">
@@ -667,7 +754,7 @@
                     </p>
                 </div>
 
-                <div class="space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border sm:col-span-2 md:col-span-1">
+                <div class="gsap-reveal space-y-2 sm:space-y-3 pt-4 sm:pt-5 border-t border-studio-border sm:col-span-2 md:col-span-1">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm">Step 05</div>
                     <h3 class="font-semibold text-base text-studio-text">Transparent Reporting</h3>
                     <p class="text-studio-muted text-sm leading-relaxed">
@@ -681,10 +768,10 @@
     </section>
 
     <!-- VERIFIED CLIENT REVIEWS -->
-    <section id="proof" class="py-16 sm:py-28 bg-studio-bg relative">
+    <section id="proof" class="py-16 sm:py-28 bg-studio-bg relative overflow-hidden">
         <div class="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
             
-            <div class="space-y-2">
+            <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-studio-text">
                     Why clients hire us.
                 </h2>
@@ -693,7 +780,7 @@
             <!-- Testimonials Grid with Real Client Logos -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 
-                <div class="p-6 sm:p-8 bg-white space-y-6 flex flex-col justify-between shadow-sm">
+                <div class="gsap-reveal p-6 sm:p-8 bg-white space-y-6 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
                     <blockquote class="italic text-base sm:text-lg text-neutral-700 leading-relaxed font-normal">
                         "SOCIA transformed our summer campaign completely. Store footfalls in Vadodara and Ahmedabad jumped 3x within 30 days of launching our vernacular reel ad creative."
                     </blockquote>
@@ -706,7 +793,7 @@
                     </div>
                 </div>
 
-                <div class="p-6 sm:p-8 bg-white space-y-6 flex flex-col justify-between shadow-sm">
+                <div class="gsap-reveal p-6 sm:p-8 bg-white space-y-6 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
                     <blockquote class="italic text-base sm:text-lg text-neutral-700 leading-relaxed font-normal">
                         "Their timing during Rakhi and Diwali is unmatched. We sold out our corporate gift box inventory in Vadodara a week ahead of schedule."
                     </blockquote>
@@ -719,7 +806,7 @@
                     </div>
                 </div>
 
-                <div class="p-6 sm:p-8 bg-white space-y-6 flex flex-col justify-between shadow-sm">
+                <div class="gsap-reveal p-6 sm:p-8 bg-white space-y-6 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
                     <blockquote class="italic text-base sm:text-lg text-neutral-700 leading-relaxed font-normal">
                         "High quality leads for luxury property projects are tough to get. SOCIA's Google Ads team delivered verified buyer site visits with excellent ROI."
                     </blockquote>
@@ -738,10 +825,10 @@
     </section>
 
     <!-- SCENE 5: FAQ ACCORDION -->
-    <section id="faq" class="py-16 sm:py-28 bg-white relative">
+    <section id="faq" class="py-16 sm:py-28 bg-white relative overflow-hidden">
         <div class="max-w-[840px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
             
-            <div class="space-y-2">
+            <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold text-studio-text">
                     Frequently Asked Questions
                 </h2>
@@ -749,50 +836,50 @@
 
             <div class="space-y-3 sm:space-y-4">
                 
-                <div class="bg-studio-bg p-5 sm:p-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
                     <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl text-studio-text">
                         <span>What minimum monthly ad budget do you work with?</span>
-                        <span class="text-studio-accent text-lg font-bold shrink-0">+</span>
+                        <span class="text-studio-accent text-lg font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
                     <div class="faq-answer text-sm sm:text-base text-studio-muted leading-relaxed pt-3 sm:pt-4 font-normal">
                         We typically work with brands allocating ₹1 Lakh+ monthly ad spend on Meta or Google Ads. This ensures sufficient data volume for algorithmic optimization and reliable A/B testing.
                     </div>
                 </div>
 
-                <div class="bg-studio-bg p-5 sm:p-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
                     <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl text-studio-text">
                         <span>Do you handle vertical 9:16 reel shoots in-house?</span>
-                        <span class="text-studio-accent text-lg font-bold shrink-0">+</span>
+                        <span class="text-studio-accent text-lg font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
                     <div class="faq-answer text-sm sm:text-base text-studio-muted leading-relaxed pt-3 sm:pt-4 font-normal">
                         Yes! We have an in-house production crew in Vadodara and Ahmedabad equipped for studio shoots, food styling, reel scripting, and vernacular Gujarati/Hindi voiceovers.
                     </div>
                 </div>
 
-                <div class="bg-studio-bg p-5 sm:p-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
                     <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl text-studio-text">
                         <span>Are long-term lock-in contracts required?</span>
-                        <span class="text-studio-accent text-lg font-bold shrink-0">+</span>
+                        <span class="text-studio-accent text-lg font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
                     <div class="faq-answer text-sm sm:text-base text-studio-muted leading-relaxed pt-3 sm:pt-4 font-normal">
                         We operate on flexible 90-day growth cycles. This gives campaigns enough runway to stabilize while keeping us accountable to real ROAS and lead targets.
                     </div>
                 </div>
 
-                <div class="bg-studio-bg p-5 sm:p-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
                     <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl text-studio-text">
                         <span>How fast can campaigns go live after onboarding?</span>
-                        <span class="text-studio-accent text-lg font-bold shrink-0">+</span>
+                        <span class="text-studio-accent text-lg font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
                     <div class="faq-answer text-sm sm:text-base text-studio-muted leading-relaxed pt-3 sm:pt-4 font-normal">
                         Once access is granted, initial creative shoots and campaign setups take 5 to 7 business days. Ads typically start driving live traffic within week one.
                     </div>
                 </div>
 
-                <div class="bg-studio-bg p-5 sm:p-6 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
                     <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl text-studio-text">
                         <span>How do you track store footfalls and offline sales?</span>
-                        <span class="text-studio-accent text-lg font-bold shrink-0">+</span>
+                        <span class="text-studio-accent text-lg font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
                     <div class="faq-answer text-sm sm:text-base text-studio-muted leading-relaxed pt-3 sm:pt-4 font-normal">
                         We combine Meta Store Location targeting with custom WhatsApp voucher redemptions and QR tracking at billing counters to attribute in-store visits directly to ad campaigns.
@@ -804,12 +891,18 @@
         </div>
     </section>
 
-    <!-- RE-ARCHITECTED ICONIC STUDIO FOOTER -->
-    <footer class="pt-16 sm:pt-24 pb-16 sm:pb-20 bg-[#111215] text-[#F6F4EF] font-normal">
-        <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+    <!-- RE-ARCHITECTED ICONIC STUDIO FOOTER (SCENE SHIFT) -->
+    <footer class="pt-16 sm:pt-24 pb-16 sm:pb-20 bg-[#111215] text-[#F6F4EF] font-normal relative overflow-hidden" id="footer-section">
+        
+        <!-- Watermark Background Word -->
+        <div class="absolute bottom-5 left-10 watermark-text select-none text-white/5 z-0">
+            GROW
+        </div>
+
+        <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 relative z-10">
             
             <!-- Closing Headline & Responsive Action -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end border-b border-white/15 pb-12 sm:pb-16">
+            <div class="gsap-reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-end border-b border-white/15 pb-12 sm:pb-16">
                 <div class="lg:col-span-8 space-y-4">
                     <div class="flex items-center gap-3">
                         <img src="socia-logo-onlys.png" alt="SOCIA Logo" class="h-7 sm:h-8 w-auto object-contain">
@@ -820,14 +913,14 @@
                     </h2>
                 </div>
                 <div class="lg:col-span-4 flex lg:justify-end">
-                    <button onclick="toggleInquiryModal()" class="w-full sm:w-auto px-8 py-4 sm:py-5 bg-studio-accent hover:bg-studio-accentHover text-white text-sm sm:text-base font-semibold rounded-none shadow-lg transition-colors text-center">
+                    <button onclick="toggleInquiryModal()" class="w-full sm:w-auto px-8 py-4 sm:py-5 bg-studio-accent hover:bg-studio-accentHover hover:-translate-y-1 text-white text-sm sm:text-base font-semibold rounded-none shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
                         Book Strategy Call →
                     </button>
                 </div>
             </div>
 
             <!-- Direct Address & Responsive Directory -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 text-sm font-normal text-neutral-400">
+            <div class="gsap-reveal grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 text-sm font-normal text-neutral-400">
                 <div class="md:col-span-7 space-y-4">
                     <div class="font-semibold text-base text-white">Studio Locations</div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
@@ -841,18 +934,18 @@
                         </div>
                     </div>
                     <div class="pt-2 flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm text-white">
-                        <a href="mailto:hello@socia.in" class="hover:text-emerald-400 transition-colors">hello@socia.in</a>
-                        <a href="tel:+919876543210" class="hover:text-emerald-400 transition-colors">+91 98765 43210</a>
+                        <a href="mailto:hello@socia.in" class="animated-link hover:text-emerald-400 transition-colors">hello@socia.in</a>
+                        <a href="tel:+919876543210" class="animated-link hover:text-emerald-400 transition-colors">+91 98765 43210</a>
                     </div>
                 </div>
 
                 <div class="md:col-span-5 flex flex-col md:items-end justify-between space-y-6 md:space-y-0">
                     <div class="flex flex-wrap gap-4 sm:gap-8 text-xs sm:text-sm text-neutral-300">
-                        <a href="#work" class="hover:text-white transition-colors">Work</a>
-                        <a href="#capabilities" class="hover:text-white transition-colors">What We Do</a>
-                        <a href="#stories" class="hover:text-white transition-colors">Case Notes</a>
-                        <a href="#process" class="hover:text-white transition-colors">Process</a>
-                        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+                        <a href="#work" class="animated-link hover:text-white transition-colors">Work</a>
+                        <a href="#capabilities" class="animated-link hover:text-white transition-colors">What We Do</a>
+                        <a href="#stories" class="animated-link hover:text-white transition-colors">Case Notes</a>
+                        <a href="#process" class="animated-link hover:text-white transition-colors">Process</a>
+                        <a href="#faq" class="animated-link hover:text-white transition-colors">FAQ</a>
                     </div>
                     <div class="text-[11px] sm:text-xs text-neutral-500">
                         &copy; SOCIA Creative Agency. Paid Media & Reel Production. All rights reserved.
@@ -1093,13 +1186,13 @@
                 const card = document.createElement('div');
 
                 if (item.template === 'C') {
-                    card.className = 'bg-white rounded-none overflow-hidden flex flex-col justify-between relative group cursor-pointer shadow-sm';
+                    card.className = 'gsap-reveal bg-white rounded-none overflow-hidden flex flex-col justify-between relative group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300';
                     card.innerHTML = `
                         <div class="relative aspect-[9/16] w-full bg-black overflow-hidden" onclick="openLightbox('${item.videoUrl}', '${item.client}', '${item.title}')">
-                            <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                            <video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoplay loop muted playsinline preload="auto">
                                 <source src="${item.videoUrl}" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50 p-4 sm:p-5 flex flex-col justify-between text-white">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50 p-4 sm:p-5 flex flex-col justify-between text-white group-hover:from-black/100 transition-colors">
                                 <div class="flex items-center justify-between">
                                     <img src="${item.clientLogo}" alt="${item.client}" onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="h-6 sm:h-7 w-auto object-contain cursor-pointer brightness-200">
                                     <span class="px-2.5 py-1 bg-black/80 backdrop-blur-md rounded-none text-xs text-white/90 font-normal">
@@ -1118,7 +1211,7 @@
                         </div>
                     `;
                 } else if (item.template === 'D') {
-                    card.className = 'sm:col-span-2 bg-white p-5 sm:p-6 rounded-none flex flex-col justify-between space-y-4 cursor-pointer hover:bg-studio-surface/50 transition-colors shadow-sm';
+                    card.className = 'gsap-reveal sm:col-span-2 bg-white p-5 sm:p-6 rounded-none flex flex-col justify-between space-y-4 cursor-pointer hover:bg-studio-surface/70 border border-transparent hover:border-studio-border transition-all duration-300 shadow-sm hover:shadow-md';
                     card.onclick = () => openLightbox(item.videoUrl, item.client, item.title);
                     card.innerHTML = `
                         <div class="flex items-center justify-between border-b border-studio-border/60 pb-3 text-xs font-normal">
@@ -1138,13 +1231,13 @@
                         </div>
                     `;
                 } else {
-                    card.className = 'bg-white rounded-none overflow-hidden flex flex-col justify-between relative group cursor-pointer shadow-sm';
+                    card.className = 'gsap-reveal bg-white rounded-none overflow-hidden flex flex-col justify-between relative group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300';
                     card.innerHTML = `
                         <div class="relative aspect-[9/16] w-full bg-black overflow-hidden" onclick="openLightbox('${item.videoUrl}', '${item.client}', '${item.title}')">
-                            <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                            <video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoplay loop muted playsinline preload="auto">
                                 <source src="${item.videoUrl}" type="video/mp4">
                             </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50 p-4 sm:p-5 flex flex-col justify-between text-white">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50 p-4 sm:p-5 flex flex-col justify-between text-white group-hover:from-black/100 transition-colors">
                                 <div class="flex items-center justify-between">
                                     <img src="${item.clientLogo}" alt="${item.client}" onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="h-6 sm:h-7 w-auto object-contain cursor-pointer brightness-200">
                                     <span class="px-2.5 py-1 bg-black/80 backdrop-blur-md rounded-none text-xs text-white/90 font-normal">
@@ -1166,6 +1259,11 @@
 
                 grid.appendChild(card);
             });
+
+            // Re-trigger GSAP ScrollTrigger for dynamically rendered portfolio items
+            if (typeof ScrollTrigger !== 'undefined') {
+                ScrollTrigger.refresh();
+            }
         }
 
         function filterPortfolio(cat, btn) {
@@ -1248,11 +1346,13 @@
             document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
             document.querySelectorAll('#faq span:last-child').forEach(i => {
                 i.textContent = '+';
+                i.style.transform = 'rotate(0deg)';
             });
 
             if (!isOpen) {
                 answer.classList.add('open');
                 icon.textContent = '−';
+                icon.style.transform = 'rotate(180deg)';
             }
         }
 
@@ -1286,8 +1386,132 @@
             setTimeout(() => toast.classList.add('hidden'), 3500);
         }
 
+        /* MASTER GSAP & SCROLLTRIGGER ANIMATION SYSTEM ENGINE */
+        function initGSAPAnimations() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            /* LEVEL 1 — HERO STAGGER PAGE LOAD TIMELINE */
+            const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.0 } });
+
+            heroTl.to('#header', {
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+                duration: 0.8
+            })
+            .to('.hero-stagger-item', {
+                opacity: 1,
+                y: 0,
+                filter: 'blur(0px)',
+                stagger: 0.14,
+                duration: 1.1
+            }, '-=0.5');
+
+            /* LEVEL 2 — CINEMATIC SCROLL REVEALS */
+            gsap.utils.toArray('.gsap-reveal').forEach((elem) => {
+                gsap.to(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: 'top 88%',
+                        toggleActions: 'play none none none'
+                    },
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    duration: 1.1,
+                    ease: 'power3.out'
+                });
+            });
+
+            /* LEVEL 3 — APPLE TIER VIDEO REVEAL (Scale + Clip-Path) */
+            gsap.utils.toArray('.gsap-video-reveal').forEach((elem) => {
+                gsap.to(elem, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    },
+                    opacity: 1,
+                    scale: 1,
+                    clipPath: 'inset(0% 0% 0% 0%)',
+                    duration: 1.4,
+                    ease: 'power4.out'
+                });
+            });
+
+            /* LEVEL 5 — NUMERIC STAT COUNTERS (ScrollTriggered) */
+            gsap.utils.toArray('.counter-stat').forEach((counter) => {
+                const targetVal = parseFloat(counter.getAttribute('data-target'));
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const decimals = parseInt(counter.getAttribute('data-decimals') || '0');
+
+                let obj = { val: 0 };
+
+                gsap.to(obj, {
+                    scrollTrigger: {
+                        trigger: counter,
+                        start: 'top 88%',
+                        toggleActions: 'play none none none'
+                    },
+                    val: targetVal,
+                    duration: 2.2,
+                    ease: 'power2.out',
+                    onUpdate: function() {
+                        if (decimals > 0) {
+                            counter.textContent = obj.val.toFixed(decimals) + ' ' + suffix;
+                        } else {
+                            counter.textContent = Math.floor(obj.val).toLocaleString() + ' ' + suffix;
+                        }
+                    }
+                });
+            });
+
+            /* LEVEL 7 — HERO CURSOR PARALLAX TILT (Max 8-10px) */
+            const heroWrapper = document.querySelector('.hero-cursor-wrapper');
+            if (heroWrapper && window.innerWidth > 768) {
+                heroWrapper.addEventListener('mousemove', (e) => {
+                    const rect = heroWrapper.getBoundingClientRect();
+                    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+                    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+
+                    gsap.to(heroWrapper, {
+                        x: x * 8,
+                        y: y * 8,
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+                });
+
+                heroWrapper.addEventListener('mouseleave', () => {
+                    gsap.to(heroWrapper, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+                });
+            }
+
+            /* LEVEL 9 — WATERMARK PARALLAX DRIFT */
+            gsap.utils.toArray('.watermark-text').forEach((wm) => {
+                gsap.to(wm, {
+                    scrollTrigger: {
+                        trigger: wm.parentElement,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1.5
+                    },
+                    y: -60,
+                    ease: 'none'
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             renderPortfolioGrid(sociaCampaigns);
+            initGSAPAnimations();
         });
     </script>
 </body>
