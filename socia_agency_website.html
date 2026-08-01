@@ -158,11 +158,26 @@
         .brand-badge {
             cursor: pointer;
             touch-action: manipulation;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+            transition: transform 0.2s ease, filter 0.2s ease;
         }
         .brand-badge:hover {
-            transform: scale(1.05);
-            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        /* Smooth Infinite Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 22s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
         }
     </style>
 </head>
@@ -263,16 +278,30 @@
                 </div>
             </div>
 
-            <!-- Client Brand Logo Wall -->
+            <!-- Moving Infinite Client Brand Logo Marquee -->
             <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-studio-border/60">
                 <div class="text-[11px] sm:text-xs text-studio-dim font-medium uppercase tracking-wider mb-4">Trusted by Regional & National Consumer Brands</div>
-                <div class="grid grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
-                    <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
-                    <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
-                    <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" onclick="inspectCampaign('SC-03')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
-                    <img src="honestrestaurantlogo.png" alt="Honest Restaurants" onclick="inspectCampaign('SC-04')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
-                    <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
-                    <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
+                <div class="marquee-container overflow-hidden relative w-full py-2">
+                    <div class="marquee-track flex items-center">
+                        <!-- Loop Group 1 -->
+                        <div class="flex items-center gap-12 sm:gap-20 shrink-0 pr-12 sm:pr-20">
+                            <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" onclick="inspectCampaign('SC-03')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="honestrestaurantlogo.png" alt="Honest Restaurants" onclick="inspectCampaign('SC-04')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                        </div>
+                        <!-- Duplicate Loop Group 2 for Continuous Seamless Motion -->
+                        <div class="flex items-center gap-12 sm:gap-20 shrink-0 pr-12 sm:pr-20">
+                            <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" onclick="inspectCampaign('SC-03')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="honestrestaurantlogo.png" alt="Honest Restaurants" onclick="inspectCampaign('SC-04')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                            <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')" class="brand-badge h-8 sm:h-11 w-auto object-contain">
+                        </div>
+                    </div>
                 </div>
             </div>
 
