@@ -144,15 +144,15 @@
             opacity: 1;
         }
 
-        /* SC-ID Metadata Badge */
-        .sc-badge {
+        /* Brand Logo Interactive Badge */
+        .brand-badge {
             cursor: pointer;
             touch-action: manipulation;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
-        .sc-badge:hover, .sc-badge:active {
-            background-color: #1D5A46;
-            color: #FFFFFF;
-            border-color: #1D5A46;
+        .brand-badge:hover {
+            transform: scale(1.05);
+            opacity: 1;
         }
     </style>
 </head>
@@ -254,12 +254,12 @@
             <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-studio-border/60">
                 <div class="text-[11px] sm:text-xs text-studio-dim font-medium uppercase tracking-wider mb-4">Trusted by Regional & National Consumer Brands</div>
                 <div class="grid grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
-                    <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" class="h-7 sm:h-9 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" class="h-7 sm:h-9 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" class="h-7 sm:h-9 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="honestrestaurantlogo.png" alt="Honest Restaurants" class="h-7 sm:h-9 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="asopalavsilkslogo.png" alt="Asopalav Silks" class="h-7 sm:h-9 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
-                    <img src="shivalikgroupslogo.png" alt="Shivalik Group" class="h-7 sm:h-9 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity">
+                    <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
+                    <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
+                    <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" onclick="inspectCampaign('SC-03')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
+                    <img src="honestrestaurantlogo.png" alt="Honest Restaurants" onclick="inspectCampaign('SC-04')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
+                    <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
+                    <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')" class="brand-badge h-7 sm:h-9 w-auto object-contain">
                 </div>
             </div>
 
@@ -272,13 +272,10 @@
             
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 sm:pb-4 border-b border-studio-border/40">
                 <div class="flex items-center gap-3">
-                    <span onclick="inspectCampaign('SC-01')" class="sc-badge px-3 py-1 bg-studio-surface border border-studio-border text-studio-accent text-xs font-medium rounded-none">SC-01</span>
+                    <img src="jantaicecreamslogo.png" alt="Janta Ice Cream Logo" onclick="inspectCampaign('SC-01')" class="brand-badge h-7 sm:h-8 w-auto object-contain">
                     <span class="text-xs sm:text-sm font-normal text-studio-muted">Featured Campaign Spotlight</span>
                 </div>
-                <div class="flex items-center gap-2 text-xs sm:text-sm font-normal text-studio-muted">
-                    <img src="jantaicecreamslogo.png" alt="Janta Ice Cream Logo" class="h-5 sm:h-6 w-auto object-contain">
-                    <span>Janta Ice Cream — Ahmedabad</span>
-                </div>
+                <div class="text-xs sm:text-sm font-normal text-studio-muted">Janta Ice Cream — Ahmedabad</div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
@@ -307,7 +304,7 @@
                             </div>
                         </div>
 
-                        <button onclick="openLightbox('jantaicecream.mp4', 'SC-01 · Janta Ice Cream', 'Meta Ads • Retail Footfalls')" class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-studio-accent text-white flex items-center justify-center text-sm hover:bg-studio-accentHover" title="Watch Fullscreen">
+                        <button onclick="openLightbox('jantaicecream.mp4', 'Janta Ice Cream', 'Meta Ads • Retail Footfalls')" class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-studio-accent text-white flex items-center justify-center text-sm hover:bg-studio-accentHover" title="Watch Fullscreen">
                             ⛶
                         </button>
                     </div>
@@ -425,8 +422,7 @@
                 <div class="bg-studio-bg p-6 sm:p-10 space-y-6">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm font-normal">
                         <div class="flex items-center gap-3">
-                            <span onclick="inspectCampaign('SC-02')" class="sc-badge px-2.5 py-1 bg-white border border-studio-border text-studio-accent rounded-none font-medium text-xs">SC-02</span>
-                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Logo" class="h-6 w-auto object-contain">
+                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Logo" onclick="inspectCampaign('SC-02')" class="brand-badge h-7 sm:h-8 w-auto object-contain">
                             <span class="font-semibold text-studio-text text-base">Wagh Bakri Tea</span>
                         </div>
                         <span class="text-studio-muted text-xs">Sector: FMCG & Beverages</span>
@@ -458,7 +454,7 @@
                         </div>
 
                         <div class="lg:col-span-4 flex justify-center">
-                            <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('waghbakrigroups.mp4', 'SC-02 · Wagh Bakri Tea', 'Vernacular Video Reach')">
+                            <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('waghbakrigroups.mp4', 'Wagh Bakri Tea', 'Vernacular Video Reach')">
                                 <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
                                     <source src="waghbakrigroups.mp4" type="video/mp4">
                                 </video>
@@ -474,8 +470,7 @@
                 <div class="bg-studio-bg p-6 sm:p-10 space-y-6">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm font-normal">
                         <div class="flex items-center gap-3">
-                            <span onclick="inspectCampaign('SC-03')" class="sc-badge px-2.5 py-1 bg-white border border-studio-border text-studio-accent rounded-none font-medium text-xs">SC-03</span>
-                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets Logo" class="h-6 w-auto object-contain">
+                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets Logo" onclick="inspectCampaign('SC-03')" class="brand-badge h-7 sm:h-8 w-auto object-contain">
                             <span class="font-semibold text-studio-text text-base">Kheteshwar Sweets</span>
                         </div>
                         <span class="text-studio-muted text-xs">Sector: FMCG & Sweets</span>
@@ -505,7 +500,7 @@
                         </div>
 
                         <div class="lg:col-span-4 flex justify-center">
-                            <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('kheteshwarsweets.mp4', 'SC-03 · Kheteshwar Sweets', 'Festive Gift Box Campaign')">
+                            <div class="w-full max-w-[200px] sm:max-w-[220px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('kheteshwarsweets.mp4', 'Kheteshwar Sweets', 'Festive Gift Box Campaign')">
                                 <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
                                     <source src="kheteshwarsweets.mp4" type="video/mp4">
                                 </video>
@@ -890,14 +885,13 @@
         </div>
     </div>
 
-    <!-- Interactive SC-ID Inspection Drawer Modal -->
+    <!-- Interactive Inspection Drawer Modal -->
     <div id="sc-inspect-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm hidden p-4">
         <div class="w-full max-w-lg bg-white border border-studio-border p-5 sm:p-8 rounded-none relative space-y-5 sm:space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
             <button onclick="closeSCInspect()" class="absolute top-4 right-4 text-studio-muted hover:text-studio-text text-lg">✕</button>
 
             <div class="flex items-center gap-3">
-                <img id="sc-inspect-logo" src="socia-logo-onlys.png" alt="Client Logo" class="h-6 sm:h-8 w-auto object-contain">
-                <span id="sc-inspect-id" class="px-2.5 py-1 bg-studio-surface border border-studio-border text-studio-accent font-medium text-xs rounded-none">SC-00</span>
+                <img id="sc-inspect-logo" src="jantaicecreamslogo.png" alt="Client Logo" class="h-7 sm:h-9 w-auto object-contain">
                 <span id="sc-inspect-client" class="font-semibold text-lg sm:text-xl text-studio-text truncate">Client Name</span>
             </div>
 
@@ -926,7 +920,7 @@
             </div>
 
             <button onclick="closeSCInspect()" class="w-full py-3 bg-studio-surface border border-studio-border text-studio-text text-xs sm:text-sm rounded-none hover:bg-studio-border transition-colors">
-                Close Metadata Card
+                Close Campaign Card
             </button>
         </div>
     </div>
@@ -1052,24 +1046,19 @@
                 if (item.template === 'C') {
                     card.className = 'bg-white rounded-none overflow-hidden flex flex-col justify-between relative group cursor-pointer shadow-sm';
                     card.innerHTML = `
-                        <div class="relative aspect-[9/16] w-full bg-black overflow-hidden" onclick="openLightbox('${item.videoUrl}', '${item.id} · ${item.client}', '${item.title}')">
+                        <div class="relative aspect-[9/16] w-full bg-black overflow-hidden" onclick="openLightbox('${item.videoUrl}', '${item.client}', '${item.title}')">
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
                                 <source src="${item.videoUrl}" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50 p-4 sm:p-5 flex flex-col justify-between text-white">
                                 <div class="flex items-center justify-between">
-                                    <span onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="sc-badge px-2.5 py-1 bg-black/80 backdrop-blur-md rounded-none text-xs text-emerald-400 border border-white/20 font-medium">
-                                        ${item.id}
-                                    </span>
+                                    <img src="${item.clientLogo}" alt="${item.client}" onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="h-6 sm:h-7 w-auto object-contain cursor-pointer brightness-200">
                                     <span class="px-2.5 py-1 bg-black/80 backdrop-blur-md rounded-none text-xs text-white/90 font-normal">
                                         ${item.sector}
                                     </span>
                                 </div>
                                 <div class="space-y-1.5 pt-4">
-                                    <div class="flex items-center gap-2">
-                                        <img src="${item.clientLogo}" alt="${item.client}" class="h-4 w-auto object-contain brightness-200">
-                                        <div class="text-xs text-neutral-300 font-normal">${item.client}</div>
-                                    </div>
+                                    <div class="text-xs text-neutral-300 font-normal">${item.client}</div>
                                     <h3 class="font-semibold text-base text-white group-hover:text-emerald-400 transition-colors">"${item.title}"</h3>
                                     <div class="text-xs text-neutral-300 flex items-center justify-between pt-2 border-t border-white/10 font-normal">
                                         <span>${item.result}</span>
@@ -1081,14 +1070,14 @@
                     `;
                 } else if (item.template === 'D') {
                     card.className = 'sm:col-span-2 bg-white p-5 sm:p-6 rounded-none flex flex-col justify-between space-y-4 cursor-pointer hover:bg-studio-surface/50 transition-colors shadow-sm';
-                    card.onclick = () => openLightbox(item.videoUrl, `${item.id} · ${item.client}`, item.title);
+                    card.onclick = () => openLightbox(item.videoUrl, item.client, item.title);
                     card.innerHTML = `
                         <div class="flex items-center justify-between border-b border-studio-border/60 pb-3 text-xs font-normal">
-                            <div class="flex items-center gap-2">
-                                <span onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="sc-badge px-2.5 py-1 bg-studio-surface border border-studio-border text-studio-accent rounded-none font-medium">${item.id}</span>
-                                <img src="${item.clientLogo}" alt="${item.client}" class="h-4 sm:h-5 w-auto object-contain">
+                            <div class="flex items-center gap-3">
+                                <img src="${item.clientLogo}" alt="${item.client}" onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="h-6 sm:h-7 w-auto object-contain cursor-pointer">
+                                <span class="font-semibold text-studio-text">${item.client}</span>
                             </div>
-                            <span class="text-studio-muted">${item.client}</span>
+                            <span class="text-studio-muted">${item.sector}</span>
                         </div>
                         <div>
                             <h3 class="font-semibold text-base sm:text-lg text-studio-text">"${item.title}"</h3>
@@ -1102,24 +1091,19 @@
                 } else {
                     card.className = 'bg-white rounded-none overflow-hidden flex flex-col justify-between relative group cursor-pointer shadow-sm';
                     card.innerHTML = `
-                        <div class="relative aspect-[9/16] w-full bg-black overflow-hidden" onclick="openLightbox('${item.videoUrl}', '${item.id} · ${item.client}', '${item.title}')">
+                        <div class="relative aspect-[9/16] w-full bg-black overflow-hidden" onclick="openLightbox('${item.videoUrl}', '${item.client}', '${item.title}')">
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
                                 <source src="${item.videoUrl}" type="video/mp4">
                             </video>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/50 p-4 sm:p-5 flex flex-col justify-between text-white">
                                 <div class="flex items-center justify-between">
-                                    <span onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="sc-badge px-2.5 py-1 bg-black/80 backdrop-blur-md rounded-none text-xs text-emerald-400 border border-white/20 font-medium">
-                                        ${item.id}
-                                    </span>
+                                    <img src="${item.clientLogo}" alt="${item.client}" onclick="event.stopPropagation(); inspectCampaign('${item.id}')" class="h-6 sm:h-7 w-auto object-contain cursor-pointer brightness-200">
                                     <span class="px-2.5 py-1 bg-black/80 backdrop-blur-md rounded-none text-xs text-white/90 font-normal">
                                         ${item.sector}
                                     </span>
                                 </div>
                                 <div class="space-y-1.5 pt-4">
-                                    <div class="flex items-center gap-2">
-                                        <img src="${item.clientLogo}" alt="${item.client}" class="h-4 w-auto object-contain brightness-200">
-                                        <div class="text-xs text-neutral-300 font-normal">${item.client}</div>
-                                    </div>
+                                    <div class="text-xs text-neutral-300 font-normal">${item.client}</div>
                                     <h3 class="font-semibold text-base text-white group-hover:text-emerald-400 transition-colors">"${item.title}"</h3>
                                     <div class="text-xs text-neutral-300 flex items-center justify-between pt-2 border-t border-white/10 font-normal">
                                         <span>${item.result}</span>
@@ -1152,7 +1136,6 @@
             const item = sociaCampaigns.find(c => c.id === id);
             if (!item) return;
 
-            document.getElementById('sc-inspect-id').textContent = item.id;
             document.getElementById('sc-inspect-client').textContent = item.client;
             document.getElementById('sc-inspect-sector').textContent = item.sector;
             document.getElementById('sc-inspect-platform').textContent = item.platform;
