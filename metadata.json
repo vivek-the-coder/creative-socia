@@ -1,0 +1,8 @@
+{
+  "name": "SOCIA Creative Agency",
+  "description": "SOCIA Creative Agency — Paid Media & Reel Production Studio website",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

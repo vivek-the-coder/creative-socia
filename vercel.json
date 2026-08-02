@@ -1,7 +1,25 @@
 {
   "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
+    { "source": "/work", "destination": "/work.html" },
+    { "source": "/services", "destination": "/services.html" },
+    { "source": "/calculator", "destination": "/calculator.html" },
+    { "source": "/process", "destination": "/process.html" },
+    { "source": "/clients", "destination": "/clients.html" },
+    { "source": "/studios", "destination": "/studios.html" },
+    { "source": "/about", "destination": "/about.html" },
     { "source": "/socia_agency_website", "destination": "/index.html" }
   ]
 }

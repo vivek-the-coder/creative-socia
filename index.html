@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth bg-[#F6F4EF] text-[#111215]">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>SOCIA Creative Agency — Paid Media & Reel Production | Vadodara & Ahmedabad</title>
-    
+
     <!-- Favicon Integration -->
     <link rel="icon" type="image/png" href="socia-logo-onlys.png">
     <link rel="apple-touch-icon" href="socia-logo-onlys.png">
 
     <!-- SEO & Social Open Graph Meta Tags -->
-    <meta name="description" content="SOCIA Creative Agency is a paid media and vertical reel production studio based in Vadodara & Ahmedabad, Gujarat. We shoot, advertise, and measure what happens next for consumer brands.">
+    <meta name="description"
+        content="SOCIA Creative Agency is a paid media and vertical reel production studio based in Vadodara & Ahmedabad, Gujarat. We shoot, advertise, and measure what happens next for consumer brands.">
     <meta property="og:title" content="SOCIA Creative Agency — Paid Media & Reel Production | Vadodara & Ahmedabad">
-    <meta property="og:description" content="We shoot. We advertise. We measure what happens next. One team for video production, media buying, and growth reporting for consumer brands across Gujarat.">
+    <meta property="og:description"
+        content="We shoot. We advertise. We measure what happens next. One team for video production, media buying, and growth reporting for consumer brands across Gujarat.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://creative-socia.vercel.app">
     <meta property="og:image" content="socia-logo-onlys.png">
     <meta property="og:image:alt" content="SOCIA Creative Agency Studio Logo">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SOCIA Creative Agency — Paid Media & Reel Production | Vadodara & Ahmedabad">
-    <meta name="twitter:description" content="We shoot. We advertise. We measure what happens next. One team for video production, media buying, and growth reporting for consumer brands across Gujarat.">
+    <meta name="twitter:description"
+        content="We shoot. We advertise. We measure what happens next. One team for video production, media buying, and growth reporting for consumer brands across Gujarat.">
     <meta name="twitter:image" content="socia-logo-onlys.png">
 
     <!-- Schema.org JSON-LD LocalBusiness Structured Data -->
@@ -87,248 +91,186 @@
       ]
     }
     </script>
-    
+
     <!-- Single Studio Font Family: Instrument Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN & Custom Config -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Design System Modular Stylesheet -->
+    <link rel="stylesheet" href="css/main.css">
+
     <!-- GSAP 3.12 & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    screens: {
-                        'xs': '380px',
-                        '3xl': '1920px',
-                        '4k': '2560px'
-                    },
-                    colors: {
-                        studio: {
-                            bg: '#F6F4EF',
-                            panel: '#FFFFFF',
-                            surface: '#EFECE4',
-                            border: '#E2DFD5',
-                            borderLight: '#D5D1C5',
-                            text: '#111215',
-                            muted: '#686B73',
-                            dim: '#8A8D96',
-                            accent: '#1D5A46',
-                            accentHover: '#154434'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Instrument Sans"', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        body {
-            font-family: 'Instrument Sans', sans-serif;
-            background-color: #F6F4EF;
-            color: #111215;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            font-size: 16px;
-        }
-
-        /* Custom Scrollbar Utilities */
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Keyboard & Touch Focus Outline */
-        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
-            outline: 2px solid #1D5A46;
-            outline-offset: 2px;
-        }
-
-        /* Accordion transition utility */
-        .faq-answer {
-            transition: max-height 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 250ms ease-in-out;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-        .faq-answer.open {
-            max-height: 360px;
-            opacity: 1;
-        }
-
-        /* Brand Logo Interactive Badge — Full Vibrant Brand Color */
-        .brand-badge {
-            cursor: pointer;
-            touch-action: manipulation;
-            opacity: 0.92;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-        }
-        .brand-badge:hover {
-            transform: scale(1.08);
-            opacity: 1;
-        }
-
-        /* Smooth Infinite Marquee Animation */
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: marquee 24s linear infinite;
-        }
-
-        .marquee-container:hover .marquee-track {
-            animation-play-state: paused;
-        }
-
-        /* Animated Underline Links */
-        .animated-link {
-            position: relative;
-            display: inline-block;
-        }
-        .animated-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: currentColor;
-            transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .animated-link:hover::after {
-            width: 100%;
-        }
-
-        /* Initial State for GSAP Reveal */
-        .hero-stagger-item {
-            opacity: 0;
-            transform: translateY(30px);
-            filter: blur(8px);
-            will-change: opacity, transform, filter;
-        }
-
-        .gsap-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            filter: blur(10px);
-            will-change: opacity, transform, filter;
-        }
-
-        .gsap-video-reveal {
-            opacity: 0;
-            transform: scale(1.06);
-            clip-path: inset(4% 4% 4% 4%);
-            will-change: opacity, transform, clip-path;
-        }
-
-        /* Responsive Watermark Background Typography */
-        .watermark-text {
-            font-size: clamp(4rem, 14vw, 22rem);
-            font-weight: 800;
-            color: #111215;
-            opacity: 0.03;
-            user-select: none;
-            pointer-events: none;
-            line-height: 0.8;
-            letter-spacing: -0.05em;
-        }
-    </style>
+    <script src="js/animations.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
+
 <body class="selection:bg-studio-accent selection:text-white relative min-h-screen">
 
-    <!-- Mobile First Top Navigation Header (Fully Responsive for All Devices) -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#F6F4EF]/95 backdrop-blur-md border-b border-studio-border/60 hero-stagger-item" id="header">
-        <div class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-12 3xl:px-16 h-16 sm:h-20 3xl:h-24 flex items-center justify-between">
-            
-            <!-- Logo Integration -->
-            <a href="#" class="flex items-center gap-2.5 sm:gap-3 3xl:gap-4">
-                <img src="socia-logo-onlys.png" alt="SOCIA Logo" class="h-7 sm:h-9 3xl:h-12 w-auto object-contain">
-                <div class="flex flex-col">
-                    <span class="font-bold text-lg sm:text-xl 3xl:text-2xl tracking-wider text-studio-text leading-none">SOCIA</span>
-                    <span class="text-[10px] sm:text-xs 3xl:text-sm text-studio-accent font-medium tracking-tight">Creative Agency</span>
+
+
+    <!-- State-of-the-Art Mobile-First & Desktop Responsive Navbar Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-[#F6F4EF]/90 backdrop-blur-xl border-b border-studio-border/70 shadow-sm transition-all duration-300"
+        id="header">
+        <div
+            class="max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 3xl:h-24 flex items-center justify-between">
+
+            <!-- Logo & Studio Identity Badge -->
+            <a href="index.html" class="flex items-center gap-3 group shrink-0">
+                <img src="socia-logo-onlys.png" alt="SOCIA Logo"
+                    class="h-7 sm:h-9 3xl:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <div class="flex items-center gap-2">
+                    <span
+                        class="font-bold text-lg sm:text-xl 3xl:text-2xl tracking-wider text-studio-text leading-none">SOCIA</span>
+                    <span
+                        class="hidden sm:inline-block text-[9px] 3xl:text-xs font-mono font-semibold uppercase tracking-widest bg-studio-accent text-white px-1.5 py-0.5">AGENCY</span>
                 </div>
-                <span class="text-[11px] sm:text-xs 3xl:text-base font-normal text-studio-muted border-l border-studio-border pl-2.5 sm:pl-3 hidden sm:inline">Vadodara · Ahmedabad</span>
             </a>
 
-            <!-- Desktop & TV Navigation Links -->
-            <nav class="hidden md:flex items-center gap-6 lg:gap-10 3xl:gap-14 text-sm lg:text-base 3xl:text-xl font-normal text-studio-muted">
-                <a href="#work" class="animated-link hover:text-studio-text transition-colors">Work</a>
-                <a href="#capabilities" class="animated-link hover:text-studio-text transition-colors">What We Do</a>
-                <a href="#stories" class="animated-link hover:text-studio-text transition-colors">Case Notes</a>
-                <a href="#process" class="animated-link hover:text-studio-text transition-colors">Process</a>
-                <a href="#faq" class="animated-link hover:text-studio-text transition-colors">FAQ</a>
+            <!-- Desktop & Ultra-wide Navigation Links (Shown on lg: >=1024px) -->
+            <nav
+                class="hidden lg:flex items-center gap-6 xl:gap-8 3xl:gap-12 text-sm xl:text-base 3xl:text-xl font-medium text-studio-muted">
+                <a href="work.html"
+                    class="animated-link hover:text-studio-text transition-colors">Work</a>
+                <a href="services.html" class="animated-link hover:text-studio-text transition-colors">Services</a>
+                <a href="process.html" class="animated-link hover:text-studio-text transition-colors">Process</a>
+                <a href="clients.html"
+                    class="animated-link hover:text-studio-text transition-colors">Clients</a>
+                <a href="studios.html" class="animated-link hover:text-studio-text transition-colors">Studios</a>
+                <a href="about.html" class="animated-link hover:text-studio-text transition-colors">About</a>
             </nav>
 
-            <!-- Direct Action CTA & Mobile Menu Toggle -->
-            <div class="flex items-center gap-3 sm:gap-4">
-                <button onclick="toggleInquiryModal()" class="px-3.5 sm:px-5 3xl:px-8 py-2 sm:py-2.5 3xl:py-3.5 bg-studio-text text-white hover:bg-studio-accent hover:-translate-y-0.5 text-xs sm:text-sm 3xl:text-lg font-medium rounded-none shadow-sm hover:shadow-md transition-all duration-200">
-                    Book Call
+            <!-- Direct Action Call to Action Button & Mobile/Tablet Menu Toggle -->
+            <div class="flex items-center gap-2.5 sm:gap-4">
+                <button onclick="toggleInquiryModal()"
+                    class="px-4 sm:px-6 3xl:px-8 py-2 sm:py-2.5 3xl:py-3.5 bg-studio-text text-white hover:bg-studio-accent hover:-translate-y-0.5 text-xs sm:text-sm 3xl:text-lg font-medium shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-1.5">
+                    <span>Book Call</span>
+                    <span class="text-emerald-400 font-bold hidden xs:inline">→</span>
                 </button>
-                <button onclick="toggleMobileMenu()" class="md:hidden text-studio-text text-xl p-2 rounded-none focus:outline-none" aria-label="Toggle Navigation Menu">
-                    <span id="mobile-icon">☰</span>
+
+                <!-- Mobile & Tablet Hamburger Toggle (< lg) -->
+                <button onclick="toggleMobileMenu()"
+                    class="lg:hidden px-2.5 py-2 border border-studio-border/80 text-studio-text hover:bg-studio-surface transition-colors flex items-center gap-2 rounded-none"
+                    aria-label="Toggle Menu">
+                    <span
+                        class="text-xs font-mono font-medium uppercase tracking-wider text-studio-muted hidden xs:inline">Menu</span>
+                    <svg id="hamburger-svg" class="w-5 h-5 transition-transform duration-300" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="bar1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
             </div>
 
         </div>
 
-        <!-- Touch Mobile Navigation Menu Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden bg-studio-panel px-6 py-6 space-y-4 text-base font-normal border-b border-studio-border shadow-lg">
-            <a href="#work" onclick="toggleMobileMenu()" class="block text-studio-muted hover:text-studio-text py-1 border-b border-studio-border/30">Work</a>
-            <a href="#capabilities" onclick="toggleMobileMenu()" class="block text-studio-muted hover:text-studio-text py-1 border-b border-studio-border/30">What We Do</a>
-            <a href="#stories" onclick="toggleMobileMenu()" class="block text-studio-muted hover:text-studio-text py-1 border-b border-studio-border/30">Case Notes</a>
-            <a href="#process" onclick="toggleMobileMenu()" class="block text-studio-muted hover:text-studio-text py-1 border-b border-studio-border/30">Process</a>
-            <a href="#faq" onclick="toggleMobileMenu()" class="block text-studio-muted hover:text-studio-text py-1 border-b border-studio-border/30">FAQ</a>
-            <button onclick="toggleMobileMenu(); toggleInquiryModal()" class="w-full text-left py-3 text-studio-accent font-medium mt-2 pt-2 flex items-center justify-between">
-                <span>Book Strategy Call</span>
-                <span>→</span>
-            </button>
+        <!-- Full Mobile & Tablet Touch Navigation Drawer Overlay -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden bg-studio-panel/98 backdrop-blur-2xl border-b border-studio-border shadow-2xl px-5 sm:px-8 py-6 space-y-4 text-base font-normal">
+            <div
+                class="text-xs font-mono font-semibold uppercase tracking-widest text-studio-accent border-b border-studio-border/50 pb-2 flex justify-between">
+                <span>[Studio Navigation]</span>
+                <span>Vadodara · Ahmedabad</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium text-studio-text pt-1">
+                <a href="work.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>01 / Work & Campaigns</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="services.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>02 / Services & Capabilities</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="process.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>03 / 4-Step Studio Process</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="clients.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>04 / Client Partnerships</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="studios.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>05 / Studios & Locations</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="about.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>06 / About SOCIA Agency</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+            </div>
+
+            <div
+                class="pt-3 border-t border-studio-border/50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div class="text-xs text-studio-muted font-mono">
+                    Direct Inquiry: <a href="mailto:hello@socia.in"
+                        class="text-studio-text underline font-medium">hello@socia.in</a>
+                </div>
+                <button onclick="toggleMobileMenu(); toggleInquiryModal()"
+                    class="w-full sm:w-auto px-6 py-3 bg-studio-accent text-white font-medium text-xs uppercase tracking-wider shadow-sm hover:bg-studio-accentHover transition-colors flex items-center justify-center gap-2">
+                    <span>Book Strategy Call</span>
+                    <span>→</span>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- SCENE 1: HERO SPREAD -->
-    <section class="relative pt-24 sm:pt-36 lg:pt-40 3xl:pt-52 pb-16 sm:pb-28 lg:pb-32 3xl:pb-44 overflow-hidden" id="hero-section">
-        
+    <section class="relative pt-24 sm:pt-36 lg:pt-40 3xl:pt-52 pb-16 sm:pb-28 lg:pb-32 3xl:pb-44 overflow-hidden"
+        id="hero-section">
+
         <!-- Watermark Background Word -->
         <div class="absolute top-20 left-1/2 -translate-x-1/2 watermark-text select-none z-0" id="hero-watermark">
             PRODUCE
         </div>
 
-        <div class="max-w-[1040px] 2xl:max-w-[1300px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-12 relative z-10 hero-cursor-wrapper">
-            
+        <div
+            class="max-w-[1040px] 2xl:max-w-[1300px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-12 relative z-10 hero-cursor-wrapper">
+
             <div class="space-y-6 sm:space-y-8 3xl:space-y-12">
-                
+
                 <div class="hero-stagger-item flex items-center gap-2.5 sm:gap-3 3xl:gap-4 flex-wrap">
                     <img src="socia-logo-onlys.png" alt="SOCIA Mark" class="h-4 sm:h-5 3xl:h-7 w-auto object-contain">
-                    <span class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">SOCIA Creative Agency · Paid Media & Reel Production · Vadodara & Ahmedabad</span>
+                    <span class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">SOCIA Creative Agency</span>
                 </div>
 
                 <!-- Line-by-Line Magazine Headline Reveal -->
-                <h1 class="hero-stagger-item text-3xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl 4k:text-9xl font-semibold leading-[1.12] sm:leading-[1.08] text-studio-text tracking-tight max-w-5xl 3xl:max-w-7xl break-words">
+                <h1
+                    class="hero-stagger-item text-3xl sm:text-5xl md:text-6xl lg:text-7xl 3xl:text-8xl 4k:text-9xl font-semibold leading-[1.12] sm:leading-[1.08] text-studio-text tracking-tight max-w-5xl 3xl:max-w-7xl break-words">
                     <span class="block">We shoot. We advertise.</span>
                     <span class="block text-studio-accent">We measure what happens next.</span>
                 </h1>
 
-                <p class="hero-stagger-item text-sm sm:text-lg lg:text-xl 3xl:text-3xl text-studio-muted max-w-3xl 3xl:max-w-5xl leading-relaxed font-normal">
-                    One team for video production, media buying, and growth reporting for consumer brands across Gujarat. We build targeted Meta and Google campaigns that drive offline footfalls and verified online orders.
+                <p
+                    class="hero-stagger-item text-sm sm:text-lg lg:text-xl 3xl:text-3xl text-studio-muted max-w-3xl 3xl:max-w-5xl leading-relaxed font-normal">
+                    One team for video production, media buying, and growth reporting for consumer brands across
+                    Gujarat. We build targeted Meta and Google campaigns that drive offline footfalls and verified
+                    online orders.
                 </p>
 
                 <!-- Action Links - Responsive Stack -->
-                <div class="hero-stagger-item flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 3xl:gap-8 pt-2 text-sm sm:text-base 3xl:text-xl font-medium">
-                    <button onclick="toggleInquiryModal()" class="w-full sm:w-auto px-8 3xl:px-12 py-3.5 sm:py-4 3xl:py-6 bg-studio-text text-white hover:bg-studio-accent hover:-translate-y-0.5 rounded-none shadow-md hover:shadow-lg transition-all duration-200 text-center">
+                <div
+                    class="hero-stagger-item flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 3xl:gap-8 pt-2 text-sm sm:text-base 3xl:text-xl font-medium">
+                    <button onclick="toggleInquiryModal()"
+                        class="w-full sm:w-auto px-8 3xl:px-12 py-3.5 sm:py-4 3xl:py-6 bg-studio-text text-white hover:bg-studio-accent hover:-translate-y-0.5 rounded-none shadow-md hover:shadow-lg transition-all duration-200 text-center">
                         Book Strategy Call
                     </button>
-                    <a href="#work" class="w-full sm:w-auto px-8 3xl:px-12 py-3.5 sm:py-4 3xl:py-6 bg-white border border-studio-border text-studio-text hover:bg-studio-surface hover:-translate-y-0.5 rounded-none flex items-center justify-center gap-2 text-center transition-all duration-200">
+                    <a href="#work"
+                        class="w-full sm:w-auto px-8 3xl:px-12 py-3.5 sm:py-4 3xl:py-6 bg-white border border-studio-border text-studio-text hover:bg-studio-surface hover:-translate-y-0.5 rounded-none flex items-center justify-center gap-2 text-center transition-all duration-200">
                         <span>Explore Work</span>
                         <span class="text-studio-accent">↓</span>
                     </a>
@@ -337,39 +279,62 @@
             </div>
 
             <!-- Live Active Campaign Stats Bar -->
-            <div class="hero-stagger-item mt-12 sm:mt-16 3xl:mt-24 pt-6 sm:pt-8 3xl:pt-12 border-t border-studio-border/60 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">
+            <div
+                class="hero-stagger-item mt-12 sm:mt-16 3xl:mt-24 pt-6 sm:pt-8 3xl:pt-12 border-t border-studio-border/60 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">
                 <div class="flex items-center gap-2 shrink-0">
                     <span class="font-medium text-studio-text">Active Studio Campaigns</span>
                 </div>
                 <div class="flex flex-wrap items-center gap-4 sm:gap-8 3xl:gap-14 text-xs sm:text-sm 3xl:text-xl">
-                    <div><span class="font-semibold text-studio-text">Food & Retail</span> <span class="text-studio-dim">· 25+ Outlets</span></div>
-                    <div><span class="font-semibold text-studio-text">FMCG & Sweets</span> <span class="text-studio-dim">· 3.2M Regional Reach</span></div>
-                    <div><span class="font-semibold text-studio-accent">Fashion & Real Estate</span> <span class="text-studio-accent/80 font-medium">· Active Meta & Google Ads</span></div>
+                    <div><span class="font-semibold text-studio-text">Food & Retail</span> <span
+                            class="text-studio-dim">· 25+ Outlets</span></div>
+                    <div><span class="font-semibold text-studio-text">FMCG & Sweets</span> <span
+                            class="text-studio-dim">· 3.2M Regional Reach</span></div>
+                    <div><span class="font-semibold text-studio-accent">Fashion & Real Estate</span> <span
+                            class="text-studio-accent/80 font-medium">· Active Meta & Google Ads</span></div>
                 </div>
             </div>
 
             <!-- Moving Infinite Client Brand Logo Marquee (Colorful Brand Logos) -->
-            <div class="hero-stagger-item mt-10 sm:mt-12 3xl:mt-16 pt-6 sm:pt-8 3xl:pt-10 border-t border-studio-border/60">
-                <div class="text-[11px] sm:text-xs 3xl:text-lg text-studio-dim font-medium uppercase tracking-wider mb-4 sm:mb-6">Trusted by Regional & National Consumer Brands</div>
+            <div
+                class="hero-stagger-item mt-10 sm:mt-12 3xl:mt-16 pt-6 sm:pt-8 3xl:pt-10 border-t border-studio-border/60">
+                <div
+                    class="text-[11px] sm:text-xs 3xl:text-lg text-studio-dim font-medium uppercase tracking-wider mb-4 sm:mb-6">
+                    Trusted by Regional & National Consumer Brands</div>
                 <div class="marquee-container overflow-hidden relative w-full py-2 sm:py-4">
                     <div class="marquee-track flex items-center">
                         <!-- Loop Group 1 -->
                         <div class="flex items-center gap-12 sm:gap-20 3xl:gap-28 shrink-0 pr-12 sm:pr-20 3xl:pr-28">
-                            <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" onclick="inspectCampaign('SC-03')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="honestrestaurantlogo.png" alt="Honest Restaurants" onclick="inspectCampaign('SC-04')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets"
+                                onclick="inspectCampaign('SC-03')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="honestrestaurantlogo.png" alt="Honest Restaurants"
+                                onclick="inspectCampaign('SC-04')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
                         </div>
                         <!-- Duplicate Loop Group 2 -->
                         <div class="flex items-center gap-12 sm:gap-20 3xl:gap-28 shrink-0 pr-12 sm:pr-20 3xl:pr-28">
-                            <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" onclick="inspectCampaign('SC-03')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="honestrestaurantlogo.png" alt="Honest Restaurants" onclick="inspectCampaign('SC-04')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
-                            <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')" class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="jantaicecreamslogo.png" alt="Janta Ice Cream" onclick="inspectCampaign('SC-01')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" onclick="inspectCampaign('SC-02')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets"
+                                onclick="inspectCampaign('SC-03')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="honestrestaurantlogo.png" alt="Honest Restaurants"
+                                onclick="inspectCampaign('SC-04')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="asopalavsilkslogo.png" alt="Asopalav Silks" onclick="inspectCampaign('SC-05')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
+                            <img src="shivalikgroupslogo.png" alt="Shivalik Group" onclick="inspectCampaign('SC-06')"
+                                class="brand-badge h-8 sm:h-11 3xl:h-16 w-auto object-contain">
                         </div>
                     </div>
                 </div>
@@ -380,49 +345,67 @@
 
     <!-- SCENE 2: FEATURED CAMPAIGN SPOTLIGHT -->
     <section class="py-16 sm:py-28 lg:py-32 3xl:py-44 bg-white relative overflow-hidden" id="spotlight-section">
-        
+
         <!-- Background Watermark -->
         <div class="absolute top-10 right-5 watermark-text select-none z-0">
             SPOTLIGHT
         </div>
 
-        <div class="max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16 relative z-10">
-            
-            <div class="gsap-reveal flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 sm:pb-4 border-b border-studio-border/40">
+        <div
+            class="max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16 relative z-10">
+
+            <div
+                class="gsap-reveal flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 sm:pb-4 border-b border-studio-border/40">
                 <div class="flex items-center gap-3">
-                    <img src="jantaicecreamslogo.png" alt="Janta Ice Cream Logo" onclick="inspectCampaign('SC-01')" class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
-                    <span class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">Featured Campaign Spotlight</span>
+                    <img src="jantaicecreamslogo.png" alt="Janta Ice Cream Logo" onclick="inspectCampaign('SC-01')"
+                        class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
+                    <span class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">Featured Campaign
+                        Spotlight</span>
                 </div>
-                <div class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">Janta Ice Cream — Vadodara & Ahmedabad</div>
+                <div class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">Janta Ice Cream — Vadodara &
+                    Ahmedabad</div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 3xl:gap-24 items-start">
-                
+
                 <!-- Sticky Video Reel Player Tile -->
                 <div class="lg:col-span-5 flex justify-center lg:sticky lg:top-28">
-                    <div class="gsap-video-reveal relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[380px] 3xl:max-w-[480px] 4k:max-w-[560px] aspect-[9/16] bg-black rounded-none overflow-hidden group shadow-2xl">
-                        <video id="featured-campaign-video" class="w-full h-full object-cover" autoplay loop muted playsinline preload="auto">
+                    <div
+                        class="gsap-video-reveal relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[380px] 3xl:max-w-[480px] 4k:max-w-[560px] aspect-[9/16] bg-black rounded-none overflow-hidden group shadow-2xl">
+                        <video id="featured-campaign-video" class="w-full h-full object-cover" autoplay loop muted
+                            playsinline preload="auto">
                             <source src="jantaicecream.mp4" type="video/mp4">
                         </video>
-                        
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 p-4 sm:p-5 3xl:p-8 flex flex-col justify-between text-white">
+
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 p-4 sm:p-5 3xl:p-8 flex flex-col justify-between text-white">
                             <div class="flex items-center justify-between">
-                                <span class="px-2.5 sm:px-3 3xl:px-4 py-1 3xl:py-1.5 bg-black/80 text-[11px] sm:text-xs 3xl:text-base font-normal text-emerald-400 border border-white/20 rounded-none">Captured on Location</span>
-                                <button onclick="toggleFeaturedSound()" class="w-8 h-8 3xl:w-12 3xl:h-12 rounded-none bg-black/70 border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors" title="Toggle Audio">
+                                <span
+                                    class="px-2.5 sm:px-3 3xl:px-4 py-1 3xl:py-1.5 bg-black/80 text-[11px] sm:text-xs 3xl:text-base font-normal text-emerald-400 border border-white/20 rounded-none">Captured
+                                    on Location</span>
+                                <button onclick="toggleFeaturedSound()"
+                                    class="w-8 h-8 3xl:w-12 3xl:h-12 rounded-none bg-black/70 border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors"
+                                    title="Toggle Audio">
                                     <span id="featured-sound-icon" class="text-sm 3xl:text-xl">🔇</span>
                                 </button>
                             </div>
 
                             <div class="space-y-1 sm:space-y-2">
                                 <div class="flex items-center gap-2">
-                                    <img src="jantaicecreamslogo.png" alt="Janta Logo" class="h-4 3xl:h-6 w-auto object-contain brightness-200">
-                                    <div class="text-xs 3xl:text-base font-normal text-neutral-300">Janta Ice Cream</div>
+                                    <img src="jantaicecreamslogo.png" alt="Janta Logo"
+                                        class="h-4 3xl:h-6 w-auto object-contain brightness-200">
+                                    <div class="text-xs 3xl:text-base font-normal text-neutral-300">Janta Ice Cream
+                                    </div>
                                 </div>
-                                <div class="font-medium text-base sm:text-lg 3xl:text-2xl text-white">"Summer Retail & Delivery Surge"</div>
+                                <div class="font-medium text-base sm:text-lg 3xl:text-2xl text-white">"Summer Retail &
+                                    Delivery Surge"</div>
                             </div>
                         </div>
 
-                        <button onclick="openLightbox('jantaicecream.mp4', 'Janta Ice Cream', 'Meta Ads • Retail Footfalls')" class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 w-9 h-9 sm:w-10 sm:h-10 3xl:w-14 3xl:h-14 rounded-none bg-studio-accent text-white flex items-center justify-center text-sm 3xl:text-xl hover:bg-studio-accentHover transition-colors" title="Watch Fullscreen">
+                        <button
+                            onclick="openLightbox('jantaicecream.mp4', 'Janta Ice Cream', 'Meta Ads • Retail Footfalls')"
+                            class="absolute bottom-4 right-4 sm:bottom-5 sm:right-5 z-20 w-9 h-9 sm:w-10 sm:h-10 3xl:w-14 3xl:h-14 rounded-none bg-studio-accent text-white flex items-center justify-center text-sm 3xl:text-xl hover:bg-studio-accentHover transition-colors"
+                            title="Watch Fullscreen">
                             ⛶
                         </button>
                     </div>
@@ -430,41 +413,53 @@
 
                 <!-- Magazine Editorial Story Breakdown -->
                 <div class="lg:col-span-7 space-y-6 sm:space-y-10 3xl:space-y-14">
-                    
+
                     <div class="gsap-reveal space-y-3 3xl:space-y-5">
-                        <h2 class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text leading-tight">
+                        <h2
+                            class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text leading-tight">
                             Scaling Outlet Footfalls & D2C Delivery Boxes
                         </h2>
-                        <p class="text-sm sm:text-base lg:text-lg 3xl:text-2xl text-studio-muted font-normal leading-relaxed">
-                            Produced 14 short-form video reels featuring Gujarati & Hindi vernacular hooks, paired with geofenced Meta Store Location ads within a 5km radius of 25+ Gujarat retail outlets.
+                        <p
+                            class="text-sm sm:text-base lg:text-lg 3xl:text-2xl text-studio-muted font-normal leading-relaxed">
+                            Produced 14 short-form video reels featuring Gujarati & Hindi vernacular hooks, paired with
+                            geofenced Meta Store Location ads within a 5km radius of 25+ Gujarat retail outlets.
                         </p>
                     </div>
 
                     <!-- Number Counter Grid -->
-                    <div class="gsap-reveal py-6 sm:py-8 3xl:py-12 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 3xl:gap-10 text-sm 3xl:text-xl font-normal bg-studio-bg p-5 sm:p-7 3xl:p-10 rounded-none border border-studio-border/50">
+                    <div
+                        class="gsap-reveal py-6 sm:py-8 3xl:py-12 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 3xl:gap-10 text-sm 3xl:text-xl font-normal bg-studio-bg p-5 sm:p-7 3xl:p-10 rounded-none border border-studio-border/50">
                         <div>
                             <div class="text-studio-dim text-xs 3xl:text-base">Sector</div>
-                            <div class="text-studio-text font-medium mt-1 text-sm sm:text-base 3xl:text-2xl">Food & FMCG</div>
+                            <div class="text-studio-text font-medium mt-1 text-sm sm:text-base 3xl:text-2xl">Food & FMCG
+                            </div>
                         </div>
                         <div>
                             <div class="text-studio-dim text-xs 3xl:text-base">Media</div>
-                            <div class="text-studio-text font-medium mt-1 text-sm sm:text-base 3xl:text-2xl">Meta Ads & Reels</div>
+                            <div class="text-studio-text font-medium mt-1 text-sm sm:text-base 3xl:text-2xl">Meta Ads &
+                                Reels</div>
                         </div>
                         <div>
                             <div class="text-studio-dim text-xs 3xl:text-base">Outlet Reach</div>
-                            <div class="counter-stat text-studio-text font-semibold mt-1 text-base sm:text-xl 3xl:text-3xl" data-target="1.4" data-suffix="M Reach" data-decimals="1">0</div>
-                            <span class="text-[10px] 3xl:text-sm text-emerald-700 font-medium block mt-0.5">[Verified · Meta Ads]</span>
+                            <div class="counter-stat text-studio-text font-semibold mt-1 text-base sm:text-xl 3xl:text-3xl"
+                                data-target="1.4" data-suffix="M Reach" data-decimals="1">0</div>
+                            <span class="text-[10px] 3xl:text-sm text-emerald-700 font-medium block mt-0.5">[Verified ·
+                                Meta Ads]</span>
                         </div>
                         <div>
                             <div class="text-studio-dim text-xs 3xl:text-base">Verified Visits</div>
-                            <div class="counter-stat text-studio-accent font-semibold mt-1 text-base sm:text-xl 3xl:text-3xl" data-target="42000" data-suffix="+ Visits" data-decimals="0">0</div>
-                            <span class="text-[10px] 3xl:text-sm text-emerald-700 font-medium block mt-0.5">[Verified · QR Scans]</span>
+                            <div class="counter-stat text-studio-accent font-semibold mt-1 text-base sm:text-xl 3xl:text-3xl"
+                                data-target="42000" data-suffix="+ Visits" data-decimals="0">0</div>
+                            <span class="text-[10px] 3xl:text-sm text-emerald-700 font-medium block mt-0.5">[Verified ·
+                                QR Scans]</span>
                         </div>
                     </div>
 
                     <!-- Editorial Quote -->
-                    <blockquote class="gsap-reveal italic text-base sm:text-lg lg:text-xl 3xl:text-3xl text-neutral-800 border-l-2 3xl:border-l-4 border-studio-accent pl-4 sm:pl-6 3xl:pl-8 py-2 leading-relaxed font-normal">
-                        "SOCIA transformed our summer campaign completely. Store footfalls jumped 3x within 30 days of launching our vernacular reel ad creative."
+                    <blockquote
+                        class="gsap-reveal italic text-base sm:text-lg lg:text-xl 3xl:text-3xl text-neutral-800 border-l-2 3xl:border-l-4 border-studio-accent pl-4 sm:pl-6 3xl:pl-8 py-2 leading-relaxed font-normal">
+                        "SOCIA transformed our summer campaign completely. Store footfalls jumped 3x within 30 days of
+                        launching our vernacular reel ad creative."
                     </blockquote>
 
                 </div>
@@ -476,24 +471,29 @@
 
     <!-- EDITORIAL BREAK STATEMENT -->
     <section class="py-16 sm:py-28 lg:py-32 3xl:py-44 bg-studio-bg relative overflow-hidden">
-        
+
         <!-- Watermark Background Word -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 watermark-text select-none z-0">
             MEASURE
         </div>
 
-        <div class="max-w-[1100px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 text-center space-y-4 sm:space-y-6 3xl:space-y-8 relative z-10 gsap-reveal">
-            <div class="text-xs sm:text-sm 3xl:text-xl text-studio-accent font-medium tracking-wider uppercase">[SOCIA CREATIVE STATEMENT]</div>
-            <p class="text-xl sm:text-3xl lg:text-5xl 3xl:text-7xl font-normal leading-relaxed sm:leading-tight text-studio-text max-w-4xl 3xl:max-w-6xl mx-auto">
-                "Paid media that brings customers into physical stores and verified online checkouts—not just numbers on a screen."
+        <div
+            class="max-w-[1100px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 text-center space-y-4 sm:space-y-6 3xl:space-y-8 relative z-10 gsap-reveal">
+            <div class="text-xs sm:text-sm 3xl:text-xl text-studio-accent font-medium tracking-wider uppercase">[SOCIA
+                CREATIVE STATEMENT]</div>
+            <p
+                class="text-xl sm:text-3xl lg:text-5xl 3xl:text-7xl font-normal leading-relaxed sm:leading-tight text-studio-text max-w-4xl 3xl:max-w-6xl mx-auto">
+                "Paid media that brings customers into physical stores and verified online checkouts—not just numbers on
+                a screen."
             </p>
         </div>
     </section>
 
     <!-- SCENE 3: CAMPAIGN DIRECTORY -->
     <section id="work" class="py-16 sm:py-28 3xl:py-44 bg-studio-bg relative overflow-hidden">
-        <div class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16">
-            
+        <div
+            class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16">
+
             <div class="gsap-reveal flex flex-col sm:flex-row sm:items-end justify-between gap-4">
                 <div class="space-y-2">
                     <div class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">[Selected Campaigns]</div>
@@ -503,27 +503,34 @@
                 </div>
 
                 <!-- Sector Filter Tabs -->
-                <div class="flex overflow-x-auto pb-2 sm:pb-0 hide-scrollbar gap-2 sm:gap-2.5 3xl:gap-4 text-xs sm:text-sm 3xl:text-xl font-normal" id="portfolio-filter-bar">
-                    <button onclick="filterPortfolio('all', this)" class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 bg-studio-text text-white font-medium rounded-none">
+                <div class="flex overflow-x-auto pb-2 sm:pb-0 hide-scrollbar gap-2 sm:gap-2.5 3xl:gap-4 text-xs sm:text-sm 3xl:text-xl font-normal"
+                    id="portfolio-filter-bar">
+                    <button onclick="filterPortfolio('all', this)"
+                        class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 bg-studio-text text-white font-medium rounded-none">
                         All (07)
                     </button>
-                    <button onclick="filterPortfolio('food', this)" class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
+                    <button onclick="filterPortfolio('food', this)"
+                        class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
                         Food
                     </button>
-                    <button onclick="filterPortfolio('fmcg', this)" class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
+                    <button onclick="filterPortfolio('fmcg', this)"
+                        class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
                         FMCG
                     </button>
-                    <button onclick="filterPortfolio('fashion', this)" class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
+                    <button onclick="filterPortfolio('fashion', this)"
+                        class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
                         Fashion
                     </button>
-                    <button onclick="filterPortfolio('realestate', this)" class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
+                    <button onclick="filterPortfolio('realestate', this)"
+                        class="portfolio-btn shrink-0 px-3.5 sm:px-4 3xl:px-6 py-2 sm:py-2.5 3xl:py-3.5 border border-studio-border text-studio-muted hover:text-studio-text rounded-none">
                         Real Estate
                     </button>
                 </div>
             </div>
 
             <!-- Diverse Campaign Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 3xl:grid-cols-4 gap-6 sm:gap-8 3xl:gap-12" id="portfolio-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 3xl:grid-cols-4 gap-6 sm:gap-8 3xl:gap-12"
+                id="portfolio-grid">
                 <!-- Rendered dynamically via JavaScript multi-template schema -->
             </div>
 
@@ -532,9 +539,10 @@
 
     <!-- CASE STORIES -->
     <section id="stories" class="py-16 sm:py-28 3xl:py-44 bg-white relative overflow-hidden">
-        
-        <div class="max-w-[1040px] 2xl:max-w-[1300px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-12 space-y-8 sm:space-y-12 3xl:space-y-16 relative z-10">
-            
+
+        <div
+            class="max-w-[1040px] 2xl:max-w-[1300px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-12 space-y-8 sm:space-y-12 3xl:space-y-16 relative z-10">
+
             <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text">
                     Three campaigns worth seeing.
@@ -542,48 +550,65 @@
             </div>
 
             <div class="space-y-8 sm:space-y-10 3xl:space-y-14">
-                
+
                 <!-- Story 1: Wagh Bakri Tea -->
-                <div class="gsap-reveal bg-studio-bg p-6 sm:p-10 3xl:p-14 space-y-6 3xl:space-y-10 border border-studio-border/40">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm 3xl:text-xl font-normal">
+                <div
+                    class="gsap-reveal bg-studio-bg p-6 sm:p-10 3xl:p-14 space-y-6 3xl:space-y-10 border border-studio-border/40">
+                    <div
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm 3xl:text-xl font-normal">
                         <div class="flex items-center gap-3">
-                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Logo" onclick="inspectCampaign('SC-02')" class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
-                            <span class="font-semibold text-studio-text text-base sm:text-lg 3xl:text-2xl">Wagh Bakri Tea</span>
+                            <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Logo" onclick="inspectCampaign('SC-02')"
+                                class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
+                            <span class="font-semibold text-studio-text text-base sm:text-lg 3xl:text-2xl">Wagh Bakri
+                                Tea</span>
                         </div>
                         <span class="text-studio-muted text-xs sm:text-sm 3xl:text-lg">Sector: FMCG & Beverages</span>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 3xl:gap-12 items-center">
                         <div class="lg:col-span-8 space-y-4 3xl:space-y-6">
-                            <h3 class="text-lg sm:text-2xl 3xl:text-4xl font-semibold text-studio-text">Heritage Brand Vernacular Video Reach</h3>
+                            <h3 class="text-lg sm:text-2xl 3xl:text-4xl font-semibold text-studio-text">Heritage Brand
+                                Vernacular Video Reach</h3>
                             <p class="text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
-                                Story-driven regional short-form video creative engineered to build household tea brand recall and drive pan-India subscription orders across Gujarati and Hindi demographics.
+                                Story-driven regional short-form video creative engineered to build household tea brand
+                                recall and drive pan-India subscription orders across Gujarati and Hindi demographics.
                             </p>
 
-                            <div class="grid grid-cols-3 gap-2 sm:gap-4 3xl:gap-8 pt-2 text-xs sm:text-sm 3xl:text-xl font-normal">
+                            <div
+                                class="grid grid-cols-3 gap-2 sm:gap-4 3xl:gap-8 pt-2 text-xs sm:text-sm 3xl:text-xl font-normal">
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Channels</div>
                                     <div class="text-studio-text font-medium mt-1">Meta & YouTube</div>
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Impressions</div>
-                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="3.2" data-suffix="M Reach" data-decimals="1">0</div>
-                                    <span class="text-[9px] sm:text-[10px] 3xl:text-sm text-emerald-700 font-medium block">[Verified · Meta]</span>
+                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="3.2"
+                                        data-suffix="M Reach" data-decimals="1">0</div>
+                                    <span
+                                        class="text-[9px] sm:text-[10px] 3xl:text-sm text-emerald-700 font-medium block">[Verified
+                                        · Meta]</span>
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Result</div>
-                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="28000" data-suffix="+ Orders" data-decimals="0">0</div>
-                                    <span class="text-[9px] sm:text-[10px] 3xl:text-sm text-emerald-700 font-medium block">[Verified · GA4]</span>
+                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="28000"
+                                        data-suffix="+ Orders" data-decimals="0">0</div>
+                                    <span
+                                        class="text-[9px] sm:text-[10px] 3xl:text-sm text-emerald-700 font-medium block">[Verified
+                                        · GA4]</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="lg:col-span-4 flex justify-center">
-                            <div class="w-full max-w-[200px] sm:max-w-[220px] 3xl:max-w-[300px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('waghbakrigroups.mp4', 'Wagh Bakri Tea', 'Vernacular Video Reach')">
-                                <video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoplay loop muted playsinline preload="auto">
+                            <div class="w-full max-w-[200px] sm:max-w-[220px] 3xl:max-w-[300px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group"
+                                onclick="openLightbox('waghbakrigroups.mp4', 'Wagh Bakri Tea', 'Vernacular Video Reach')">
+                                <video
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    autoplay loop muted playsinline preload="auto">
                                     <source src="waghbakrigroups.mp4" type="video/mp4">
                                 </video>
-                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
+                                <div
+                                    class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
                                     <span class="text-white text-sm 3xl:text-xl font-medium">Watch →</span>
                                 </div>
                             </div>
@@ -592,44 +617,118 @@
                 </div>
 
                 <!-- Story 2: Kheteshwar Sweets -->
-                <div class="gsap-reveal bg-studio-bg p-6 sm:p-10 3xl:p-14 space-y-6 3xl:space-y-10 border border-studio-border/40">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm 3xl:text-xl font-normal">
+                <div
+                    class="gsap-reveal bg-studio-bg p-6 sm:p-10 3xl:p-14 space-y-6 3xl:space-y-10 border border-studio-border/40">
+                    <div
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm 3xl:text-xl font-normal">
                         <div class="flex items-center gap-3">
-                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets Logo" onclick="inspectCampaign('SC-03')" class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
-                            <span class="font-semibold text-studio-text text-base sm:text-lg 3xl:text-2xl">Kheteshwar Sweets</span>
+                            <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets Logo"
+                                onclick="inspectCampaign('SC-03')"
+                                class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
+                            <span class="font-semibold text-studio-text text-base sm:text-lg 3xl:text-2xl">Kheteshwar
+                                Sweets</span>
                         </div>
                         <span class="text-studio-muted text-xs sm:text-sm 3xl:text-lg">Sector: FMCG & Sweets</span>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 3xl:gap-12 items-center">
                         <div class="lg:col-span-8 space-y-4 3xl:space-y-6">
-                            <h3 class="text-lg sm:text-2xl 3xl:text-4xl font-semibold text-studio-text">Festive Corporate Gift Box Funnel</h3>
+                            <h3 class="text-lg sm:text-2xl 3xl:text-4xl font-semibold text-studio-text">Festive
+                                Corporate Gift Box Funnel</h3>
                             <p class="text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
-                                Seasonal Rakhi and Diwali campaign delivering high organic video engagement and converting performance ads for premium sweet and namkeen gift boxes in Vadodara and Surat.
+                                Seasonal Rakhi and Diwali campaign delivering high organic video engagement and
+                                converting performance ads for premium sweet and namkeen gift boxes in Vadodara and
+                                Surat.
                             </p>
 
-                            <div class="grid grid-cols-3 gap-2 sm:gap-4 3xl:gap-8 pt-2 text-xs sm:text-sm 3xl:text-xl font-normal">
+                            <div
+                                class="grid grid-cols-3 gap-2 sm:gap-4 3xl:gap-8 pt-2 text-xs sm:text-sm 3xl:text-xl font-normal">
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Channels</div>
                                     <div class="text-studio-text font-medium mt-1">Instagram Reels</div>
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Impressions</div>
-                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="2.1" data-suffix="M Reach" data-decimals="1">0</div>
+                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="2.1"
+                                        data-suffix="M Reach" data-decimals="1">0</div>
                                 </div>
                                 <div>
                                     <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Result</div>
-                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="18000" data-suffix="+ Gift Boxes" data-decimals="0">0</div>
+                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="18000"
+                                        data-suffix="+ Gift Boxes" data-decimals="0">0</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="lg:col-span-4 flex justify-center">
-                            <div class="w-full max-w-[200px] sm:max-w-[220px] 3xl:max-w-[300px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('kheteshwarsweets.mp4', 'Kheteshwar Sweets', 'Festive Gift Box Campaign')">
-                                <video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoplay loop muted playsinline preload="auto">
+                            <div class="w-full max-w-[200px] sm:max-w-[220px] 3xl:max-w-[300px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group"
+                                onclick="openLightbox('kheteshwarsweets.mp4', 'Kheteshwar Sweets', 'Festive Gift Box Campaign')">
+                                <video
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    autoplay loop muted playsinline preload="auto">
                                     <source src="kheteshwarsweets.mp4" type="video/mp4">
                                 </video>
-                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
+                                <div
+                                    class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
+                                    <span class="text-white text-sm 3xl:text-xl font-medium">Watch →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 3: Shivalik Group -->
+                <div
+                    class="gsap-reveal bg-studio-bg p-6 sm:p-10 3xl:p-14 space-y-6 3xl:space-y-10 border border-studio-border/40">
+                    <div
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm 3xl:text-xl font-normal">
+                        <div class="flex items-center gap-3">
+                            <img src="shivalikgroupslogo.png" alt="Shivalik Group Logo"
+                                onclick="inspectCampaign('SC-06')"
+                                class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
+                            <span class="font-semibold text-studio-text text-base sm:text-lg 3xl:text-2xl">Shivalik Group</span>
+                        </div>
+                        <span class="text-studio-muted text-xs sm:text-sm 3xl:text-lg">Sector: Real Estate & Commercial</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 3xl:gap-12 items-center">
+                        <div class="lg:col-span-8 space-y-4 3xl:space-y-6">
+                            <h3 class="text-lg sm:text-2xl 3xl:text-4xl font-semibold text-studio-text">Luxury Property Walkthrough Lead Gen</h3>
+                            <p class="text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
+                                4K vertical walkthrough video campaigns showcasing luxury commercial developments, targeting high-net-worth investor demographics across Gujarat.
+                            </p>
+
+                            <div
+                                class="grid grid-cols-3 gap-2 sm:gap-4 3xl:gap-8 pt-2 text-xs sm:text-sm 3xl:text-xl font-normal">
+                                <div>
+                                    <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Channels</div>
+                                    <div class="text-studio-text font-medium mt-1">Google & Meta Ads</div>
+                                </div>
+                                <div>
+                                    <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">ROAS</div>
+                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="3.8"
+                                        data-suffix="x ROAS" data-decimals="1">0</div>
+                                </div>
+                                <div>
+                                    <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Result</div>
+                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="840"
+                                        data-suffix="+ Investor Leads" data-decimals="0">0</div>
+                                    <span
+                                        class="text-[9px] sm:text-[10px] 3xl:text-sm text-emerald-700 font-medium block">[Verified · Site Visits]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-4 flex justify-center">
+                            <div class="w-full max-w-[200px] sm:max-w-[220px] 3xl:max-w-[300px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group"
+                                onclick="openLightbox('shivalikgroups.mp4', 'Shivalik Group', 'Luxury Property Walkthrough Campaign')">
+                                <video
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    autoplay loop muted playsinline preload="auto">
+                                    <source src="shivalikgroups.mp4" type="video/mp4">
+                                </video>
+                                <div
+                                    class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
                                     <span class="text-white text-sm 3xl:text-xl font-medium">Watch →</span>
                                 </div>
                             </div>
@@ -644,14 +743,15 @@
 
     <!-- SCENE 4: CAPABILITIES DIRECTORY -->
     <section id="capabilities" class="py-16 sm:py-28 3xl:py-44 bg-studio-bg relative overflow-hidden">
-        
+
         <!-- Watermark Background Word -->
         <div class="absolute top-10 right-10 watermark-text select-none z-0">
             SCALE
         </div>
 
-        <div class="max-w-[1240px] 2xl:max-w-[1500px] 3xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16 relative z-10">
-            
+        <div
+            class="max-w-[1240px] 2xl:max-w-[1500px] 3xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16 relative z-10">
+
             <div class="gsap-reveal space-y-2">
                 <div class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">[What We Do]</div>
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text">
@@ -661,48 +761,187 @@
 
             <!-- Numbered Directory Rows -->
             <div class="divide-y divide-studio-border/60 font-normal">
-                
-                <div class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
-                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">01 / Acquire</div>
+
+                <div
+                    class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
+                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">01 /
+                        Acquire</div>
                     <div class="md:col-span-4">
-                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Acquire Customers Online</h3>
-                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">Meta Ads & Instagram Reels</div>
+                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Acquire Customers
+                            Online</h3>
+                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">Meta Ads &
+                            Instagram Reels</div>
                     </div>
-                    <div class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
-                        Custom catalog setups, Advantage+ campaigns, and targeted Instagram Reel ads engineered to acquire buyers across Tier 1 and Tier 2 cities in India.
+                    <div
+                        class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
+                        Custom catalog setups, Advantage+ campaigns, and targeted Instagram Reel ads engineered to
+                        acquire buyers across Tier 1 and Tier 2 cities in India.
                     </div>
                 </div>
 
-                <div class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
-                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">02 / Footfalls</div>
+                <div
+                    class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
+                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">02 /
+                        Footfalls</div>
                     <div class="md:col-span-4">
-                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Generate Store Visits</h3>
-                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">Geo-Local Ads & Google PMax</div>
+                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Generate Store Visits
+                        </h3>
+                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">Geo-Local Ads &
+                            Google PMax</div>
                     </div>
-                    <div class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
-                        Geofenced store location targeting combined with high-intent Google Search & Performance Max campaigns capturing local buyers in Vadodara, Ahmedabad, and Surat.
+                    <div
+                        class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
+                        Geofenced store location targeting combined with high-intent Google Search & Performance Max
+                        campaigns capturing local buyers in Vadodara, Ahmedabad, and Surat.
                     </div>
                 </div>
 
-                <div class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
-                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">03 / Production</div>
+                <div
+                    class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
+                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">03 /
+                        Production</div>
                     <div class="md:col-span-4">
-                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Produce Vernacular Reels</h3>
-                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">In-House 9:16 Shoot Studio</div>
+                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Produce Vernacular
+                            Reels</h3>
+                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">In-House 9:16
+                            Shoot Studio</div>
                     </div>
-                    <div class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
-                        In-house production crew in Vadodara and Ahmedabad equipped for studio shoots, food styling, product staging, and Gujarati/Hindi vernacular voiceover hooks.
+                    <div
+                        class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
+                        In-house production crew in Vadodara and Ahmedabad equipped for studio shoots, food styling,
+                        product staging, and Gujarati/Hindi vernacular voiceover hooks.
                     </div>
                 </div>
 
-                <div class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
-                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">04 / Launch</div>
+                <div
+                    class="gsap-reveal py-6 sm:py-10 3xl:py-14 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 3xl:gap-10 items-start">
+                    <div class="md:col-span-2 text-sm sm:text-base 3xl:text-2xl text-studio-accent font-medium">04 /
+                        Launch</div>
                     <div class="md:col-span-4">
-                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Launch Festive Campaigns</h3>
-                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">Omnichannel Strategy</div>
+                        <h3 class="text-lg sm:text-xl 3xl:text-3xl font-semibold text-studio-text">Launch Festive
+                            Campaigns</h3>
+                        <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted font-normal mt-1">Omnichannel
+                            Strategy</div>
                     </div>
-                    <div class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
-                        End-to-end campaign launches for festive surges (Navratri, Diwali, Uttarayan), influencer partnerships, and billing-counter QR footfall tracking.
+                    <div
+                        class="md:col-span-6 text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
+                        End-to-end campaign launches for festive surges (Navratri, Diwali, Uttarayan), influencer
+                        partnerships, and billing-counter QR footfall tracking.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SCENE: FOUNDERS & LEADERSHIP -->
+    <section id="founders"
+        class="py-16 sm:py-28 3xl:py-44 bg-studio-bg relative overflow-hidden border-t border-studio-border/60">
+        <!-- Watermark Background Word -->
+        <div class="absolute top-10 left-10 watermark-text select-none z-0">
+            LEADERS
+        </div>
+
+        <div
+            class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16 relative z-10">
+
+            <div
+                class="gsap-reveal flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-studio-border/60 pb-6 sm:pb-8">
+                <div class="space-y-2">
+                    <div class="text-xs sm:text-sm 3xl:text-xl font-medium text-studio-accent uppercase tracking-wider">
+                        [Leadership & Creative Direction]</div>
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text">
+                        Meet the Founders
+                    </h2>
+                </div>
+                <p class="text-sm sm:text-base 3xl:text-xl text-studio-muted max-w-md font-normal leading-relaxed">
+                    Combining visual storytelling with disciplined media buying performance across Gujarat.
+                </p>
+            </div>
+
+            <!-- Founders Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 3xl:gap-16">
+
+                <!-- Founder 1: Aarav Mehta -->
+                <div
+                    class="gsap-reveal bg-white border border-studio-border p-6 sm:p-10 3xl:p-14 space-y-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-300 group">
+                    <div class="space-y-6">
+                        <div
+                            class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden bg-studio-surface border border-studio-border">
+                            <img src="founder_aarav.png" alt="Aarav Mehta - Co-Founder & Creative Director"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute top-4 left-4 bg-studio-text/90 backdrop-blur-sm text-white px-3 py-1 text-xs sm:text-sm font-mono tracking-wider">
+                                CO-FOUNDER
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl sm:text-3xl 3xl:text-4xl font-semibold text-studio-text">Aarav Mehta
+                                </h3>
+                                <span
+                                    class="text-xs sm:text-sm text-studio-accent font-medium bg-emerald-50 px-2.5 py-1 border border-emerald-200">Creative
+                                    Director</span>
+                            </div>
+                            <p class="text-xs sm:text-sm font-mono text-studio-dim">[Vadodara Studio Hub · Video
+                                Directing & Hook Scripting]</p>
+                        </div>
+
+                        <p class="text-sm sm:text-base 3xl:text-xl text-studio-muted leading-relaxed font-normal">
+                            Former commercial video director with 8+ years of expertise crafting high-converting 9:16
+                            vertical reel campaigns. Aarav leads SOCIA's studio production team in Vadodara & Ahmedabad,
+                            turning regional brand stories into scroll-stopping video assets.
+                        </p>
+                    </div>
+
+                    <div
+                        class="pt-4 border-t border-studio-border/60 flex items-center justify-between text-xs sm:text-sm text-studio-muted font-medium">
+                        <span>Reels Direction & Creative Strategy</span>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener"
+                            class="animated-link hover:text-studio-accent">LinkedIn Profile →</a>
+                    </div>
+                </div>
+
+                <!-- Founder 2: Rohan Parikh -->
+                <div
+                    class="gsap-reveal bg-white border border-studio-border p-6 sm:p-10 3xl:p-14 space-y-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-300 group">
+                    <div class="space-y-6">
+                        <div
+                            class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden bg-studio-surface border border-studio-border">
+                            <img src="founder_rohan.png" alt="Rohan Parikh - Co-Founder & Head of Growth"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute top-4 left-4 bg-studio-text/90 backdrop-blur-sm text-white px-3 py-1 text-xs sm:text-sm font-mono tracking-wider">
+                                CO-FOUNDER
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-2xl sm:text-3xl 3xl:text-4xl font-semibold text-studio-text">Rohan
+                                    Parikh</h3>
+                                <span
+                                    class="text-xs sm:text-sm text-studio-accent font-medium bg-emerald-50 px-2.5 py-1 border border-emerald-200">Head
+                                    of Growth</span>
+                            </div>
+                            <p class="text-xs sm:text-sm font-mono text-studio-dim">[Ahmedabad Production Hub ·
+                                Performance Marketing & ROAS]</p>
+                        </div>
+
+                        <p class="text-sm sm:text-base 3xl:text-xl text-studio-muted leading-relaxed font-normal">
+                            Performance marketing specialist with over ₹45Cr+ in managed Meta and Google ad spend. Rohan
+                            oversees campaign media buying, Advantage+ catalog architectures, and store-level offline
+                            footfall attribution for consumer brands across Gujarat.
+                        </p>
+                    </div>
+
+                    <div
+                        class="pt-4 border-t border-studio-border/60 flex items-center justify-between text-xs sm:text-sm text-studio-muted font-medium">
+                        <span>Paid Media & Growth Analytics</span>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener"
+                            class="animated-link hover:text-studio-accent">LinkedIn Profile →</a>
                     </div>
                 </div>
 
@@ -713,8 +952,9 @@
 
     <!-- PROCESS METHODOLOGY TIMELINE -->
     <section id="process" class="py-16 sm:py-28 3xl:py-44 bg-white relative overflow-hidden">
-        <div class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16">
-            
+        <div
+            class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16">
+
             <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text">
                     Inside one launch.
@@ -722,25 +962,32 @@
             </div>
 
             <!-- Sequential Execution Framework -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 3xl:gap-12 text-sm sm:text-base 3xl:text-xl font-normal">
-                
-                <div class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
+            <div
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 3xl:gap-12 text-sm sm:text-base 3xl:text-xl font-normal">
+
+                <div
+                    class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm 3xl:text-lg">Step 01</div>
                     <h3 class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Audit & Strategy</h3>
                     <p class="text-studio-muted text-sm sm:text-base 3xl:text-xl leading-relaxed">
-                        We analyze historical spend data, unit economics, and regional competitor positioning across Gujarat.
+                        We analyze historical spend data, unit economics, and regional competitor positioning across
+                        Gujarat.
                     </p>
                 </div>
 
-                <div class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
+                <div
+                    class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm 3xl:text-lg">Step 02</div>
-                    <h3 class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Vernacular Reel Shoot</h3>
+                    <h3 class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Vernacular Reel Shoot
+                    </h3>
                     <p class="text-studio-muted text-sm sm:text-base 3xl:text-xl leading-relaxed">
-                        On-site studio reel shoots, food styling, and video hook scripting tailored for local demographics.
+                        On-site studio reel shoots, food styling, and video hook scripting tailored for local
+                        demographics.
                     </p>
                 </div>
 
-                <div class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
+                <div
+                    class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm 3xl:text-lg">Step 03</div>
                     <h3 class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Precision Setup</h3>
                     <p class="text-studio-muted text-sm sm:text-base 3xl:text-xl leading-relaxed">
@@ -748,7 +995,8 @@
                     </p>
                 </div>
 
-                <div class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
+                <div
+                    class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm 3xl:text-lg">Step 04</div>
                     <h3 class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Weekly A/B Scaling</h3>
                     <p class="text-studio-muted text-sm sm:text-base 3xl:text-xl leading-relaxed">
@@ -756,9 +1004,11 @@
                     </p>
                 </div>
 
-                <div class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border sm:col-span-2 md:col-span-1">
+                <div
+                    class="gsap-reveal space-y-2 sm:space-y-3 3xl:space-y-4 pt-4 sm:pt-5 border-t border-studio-border sm:col-span-2 md:col-span-1">
                     <div class="text-studio-accent font-medium text-xs sm:text-sm 3xl:text-lg">Step 05</div>
-                    <h3 class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Transparent Reporting</h3>
+                    <h3 class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Transparent Reporting
+                    </h3>
                     <p class="text-studio-muted text-sm sm:text-base 3xl:text-xl leading-relaxed">
                         Live dashboard access with weekly strategist calls detailing clear acquisition costs.
                     </p>
@@ -771,8 +1021,9 @@
 
     <!-- VERIFIED CLIENT REVIEWS -->
     <section id="proof" class="py-16 sm:py-28 3xl:py-44 bg-studio-bg relative overflow-hidden">
-        <div class="max-w-[1140px] 2xl:max-w-[1400px] 3xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16">
-            
+        <div
+            class="max-w-[1140px] 2xl:max-w-[1400px] 3xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-12 3xl:space-y-16">
+
             <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text">
                     Why clients hire us.
@@ -781,41 +1032,56 @@
 
             <!-- Testimonials Grid with Vibrant Color Client Logos -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 3xl:gap-12">
-                
-                <div class="gsap-reveal p-6 sm:p-8 3xl:p-12 bg-white space-y-6 3xl:space-y-10 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
-                    <blockquote class="italic text-base sm:text-lg 3xl:text-2xl text-neutral-700 leading-relaxed font-normal">
-                        "SOCIA transformed our summer campaign completely. Store footfalls in Vadodara and Ahmedabad jumped 3x within 30 days of launching our vernacular reel ad creative."
+
+                <div
+                    class="gsap-reveal p-6 sm:p-8 3xl:p-12 bg-white space-y-6 3xl:space-y-10 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                    <blockquote
+                        class="italic text-base sm:text-lg 3xl:text-2xl text-neutral-700 leading-relaxed font-normal">
+                        "SOCIA transformed our summer campaign completely. Store footfalls in Vadodara and Ahmedabad
+                        jumped 3x within 30 days of launching our vernacular reel ad creative."
                     </blockquote>
                     <div class="pt-4 sm:pt-5 border-t border-studio-border/60 flex items-center gap-3 3xl:gap-4">
-                        <img src="jantaicecreamslogo.png" alt="Janta Ice Cream Logo" class="h-9 sm:h-10 3xl:h-14 w-auto object-contain">
+                        <img src="jantaicecreamslogo.png" alt="Janta Ice Cream Logo"
+                            class="h-9 sm:h-10 3xl:h-14 w-auto object-contain">
                         <div>
-                            <div class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Chintan Patel</div>
+                            <div class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Chintan Patel
+                            </div>
                             <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted">Janta Ice Cream</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="gsap-reveal p-6 sm:p-8 3xl:p-12 bg-white space-y-6 3xl:space-y-10 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
-                    <blockquote class="italic text-base sm:text-lg 3xl:text-2xl text-neutral-700 leading-relaxed font-normal">
-                        "Their timing during Rakhi and Diwali is unmatched. We sold out our corporate gift box inventory in Vadodara a week ahead of schedule."
+                <div
+                    class="gsap-reveal p-6 sm:p-8 3xl:p-12 bg-white space-y-6 3xl:space-y-10 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                    <blockquote
+                        class="italic text-base sm:text-lg 3xl:text-2xl text-neutral-700 leading-relaxed font-normal">
+                        "Their timing during Rakhi and Diwali is unmatched. We sold out our corporate gift box inventory
+                        in Vadodara a week ahead of schedule."
                     </blockquote>
                     <div class="pt-4 sm:pt-5 border-t border-studio-border/60 flex items-center gap-3 3xl:gap-4">
-                        <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets Logo" class="h-9 sm:h-10 3xl:h-14 w-auto object-contain">
+                        <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets Logo"
+                            class="h-9 sm:h-10 3xl:h-14 w-auto object-contain">
                         <div>
-                            <div class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Ketan Shah</div>
+                            <div class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Ketan Shah
+                            </div>
                             <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted">Kheteshwar Sweets</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="gsap-reveal p-6 sm:p-8 3xl:p-12 bg-white space-y-6 3xl:space-y-10 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
-                    <blockquote class="italic text-base sm:text-lg 3xl:text-2xl text-neutral-700 leading-relaxed font-normal">
-                        "High quality leads for luxury property projects are tough to get. SOCIA's Google Ads team delivered verified buyer site visits with excellent ROI."
+                <div
+                    class="gsap-reveal p-6 sm:p-8 3xl:p-12 bg-white space-y-6 3xl:space-y-10 flex flex-col justify-between shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                    <blockquote
+                        class="italic text-base sm:text-lg 3xl:text-2xl text-neutral-700 leading-relaxed font-normal">
+                        "High quality leads for luxury property projects are tough to get. SOCIA's Google Ads team
+                        delivered verified buyer site visits with excellent ROI."
                     </blockquote>
                     <div class="pt-4 sm:pt-5 border-t border-studio-border/60 flex items-center gap-3 3xl:gap-4">
-                        <img src="shivalikgroupslogo.png" alt="Shivalik Group Logo" class="h-9 sm:h-10 3xl:h-14 w-auto object-contain">
+                        <img src="shivalikgroupslogo.png" alt="Shivalik Group Logo"
+                            class="h-9 sm:h-10 3xl:h-14 w-auto object-contain">
                         <div>
-                            <div class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Harshil Mehta</div>
+                            <div class="font-semibold text-base sm:text-lg 3xl:text-2xl text-studio-text">Harshil Mehta
+                            </div>
                             <div class="text-xs sm:text-sm 3xl:text-lg text-studio-muted">Shivalik Group</div>
                         </div>
                     </div>
@@ -828,8 +1094,9 @@
 
     <!-- SCENE 5: FAQ ACCORDION -->
     <section id="faq" class="py-16 sm:py-28 3xl:py-44 bg-white relative overflow-hidden">
-        <div class="max-w-[840px] 2xl:max-w-[1100px] 3xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-10 3xl:space-y-14">
-            
+        <div
+            class="max-w-[840px] 2xl:max-w-[1100px] 3xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-8 sm:space-y-10 3xl:space-y-14">
+
             <div class="gsap-reveal space-y-2">
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl 3xl:text-7xl font-semibold text-studio-text">
                     Frequently Asked Questions
@@ -837,54 +1104,79 @@
             </div>
 
             <div class="space-y-3 sm:space-y-4 3xl:space-y-6">
-                
-                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
+
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors"
+                    onclick="toggleFaq(this)">
+                    <div
+                        class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
                         <span>What minimum monthly ad budget do you work with?</span>
-                        <span class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
+                        <span
+                            class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
-                    <div class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
-                        We typically work with brands allocating ₹1 Lakh+ monthly ad spend on Meta or Google Ads. This ensures sufficient data volume for algorithmic optimization and reliable A/B testing.
+                    <div
+                        class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
+                        We typically work with brands allocating ₹1 Lakh+ monthly ad spend on Meta or Google Ads. This
+                        ensures sufficient data volume for algorithmic optimization and reliable A/B testing.
                     </div>
                 </div>
 
-                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors"
+                    onclick="toggleFaq(this)">
+                    <div
+                        class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
                         <span>Do you handle vertical 9:16 reel shoots in-house?</span>
-                        <span class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
+                        <span
+                            class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
-                    <div class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
-                        Yes! We have an in-house production crew in Vadodara and Ahmedabad equipped for studio shoots, food styling, reel scripting, and vernacular Gujarati/Hindi voiceovers.
+                    <div
+                        class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
+                        Yes! We have an in-house production crew in Vadodara and Ahmedabad equipped for studio shoots,
+                        food styling, reel scripting, and vernacular Gujarati/Hindi voiceovers.
                     </div>
                 </div>
 
-                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors"
+                    onclick="toggleFaq(this)">
+                    <div
+                        class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
                         <span>Are long-term lock-in contracts required?</span>
-                        <span class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
+                        <span
+                            class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
-                    <div class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
-                        We operate on flexible 90-day growth cycles. This gives campaigns enough runway to stabilize while keeping us accountable to real ROAS and lead targets.
+                    <div
+                        class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
+                        We operate on flexible 90-day growth cycles. This gives campaigns enough runway to stabilize
+                        while keeping us accountable to real ROAS and lead targets.
                     </div>
                 </div>
 
-                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors"
+                    onclick="toggleFaq(this)">
+                    <div
+                        class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
                         <span>How fast can campaigns go live after onboarding?</span>
-                        <span class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
+                        <span
+                            class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
-                    <div class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
-                        Once access is granted, initial creative shoots and campaign setups take 5 to 7 business days. Ads typically start driving live traffic within week one.
+                    <div
+                        class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
+                        Once access is granted, initial creative shoots and campaign setups take 5 to 7 business days.
+                        Ads typically start driving live traffic within week one.
                     </div>
                 </div>
 
-                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
+                <div class="gsap-reveal bg-studio-bg p-5 sm:p-6 3xl:p-10 cursor-pointer hover:bg-studio-surface/60 transition-colors"
+                    onclick="toggleFaq(this)">
+                    <div
+                        class="flex items-center justify-between gap-3 font-semibold text-base sm:text-xl 3xl:text-3xl text-studio-text">
                         <span>How do you track store footfalls and offline sales?</span>
-                        <span class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
+                        <span
+                            class="text-studio-accent text-lg sm:text-xl 3xl:text-3xl font-bold shrink-0 transition-transform duration-200">+</span>
                     </div>
-                    <div class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
-                        We combine Meta Store Location targeting with custom WhatsApp voucher redemptions and QR tracking at billing counters to attribute in-store visits directly to ad campaigns.
+                    <div
+                        class="faq-answer text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed pt-3 sm:pt-4 3xl:pt-6 font-normal">
+                        We combine Meta Store Location targeting with custom WhatsApp voucher redemptions and QR
+                        tracking at billing counters to attribute in-store visits directly to ad campaigns.
                     </div>
                 </div>
 
@@ -894,55 +1186,70 @@
     </section>
 
     <!-- RE-ARCHITECTED ICONIC STUDIO FOOTER -->
-    <footer class="pt-16 sm:pt-24 3xl:pt-40 pb-16 sm:pb-20 3xl:pb-32 bg-[#111215] text-[#F6F4EF] font-normal relative overflow-hidden" id="footer-section">
-        
+    <footer
+        class="pt-16 sm:pt-24 3xl:pt-40 pb-16 sm:pb-20 3xl:pb-32 bg-[#111215] text-[#F6F4EF] font-normal relative overflow-hidden"
+        id="footer-section">
+
         <!-- Watermark Background Word -->
         <div class="absolute bottom-5 left-10 watermark-text select-none text-white/5 z-0">
             GROW
         </div>
 
-        <div class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-12 sm:space-y-16 3xl:space-y-24 relative z-10">
-            
+        <div
+            class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-12 sm:space-y-16 3xl:space-y-24 relative z-10">
+
             <!-- Closing Headline & Responsive Action -->
-            <div class="gsap-reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 3xl:gap-16 items-end border-b border-white/15 pb-12 sm:pb-16 3xl:pb-24">
+            <div
+                class="gsap-reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 3xl:gap-16 items-end border-b border-white/15 pb-12 sm:pb-16 3xl:pb-24">
                 <div class="lg:col-span-8 space-y-4 3xl:space-y-6">
                     <div class="flex items-center gap-3">
-                        <img src="socia-logo-onlys.png" alt="SOCIA Logo" class="h-7 sm:h-8 3xl:h-12 w-auto object-contain">
-                        <span class="text-xs sm:text-sm 3xl:text-xl text-emerald-400 font-medium tracking-wider uppercase">SOCIA CREATIVE AGENCY · VADODARA & AHMEDABAD</span>
+                        <img src="socia-logo-onlys.png" alt="SOCIA Logo"
+                            class="h-7 sm:h-8 3xl:h-12 w-auto object-contain">
+                        <span
+                            class="text-xs sm:text-sm 3xl:text-xl text-emerald-400 font-medium tracking-wider uppercase">SOCIA
+                            CREATIVE AGENCY · VADODARA & AHMEDABAD</span>
                     </div>
                     <h2 class="text-2xl sm:text-4xl lg:text-6xl 3xl:text-8xl font-semibold leading-tight text-white">
                         Ready to scale your store footfalls and paid media revenue?
                     </h2>
                 </div>
                 <div class="lg:col-span-4 flex lg:justify-end">
-                    <button onclick="toggleInquiryModal()" class="w-full sm:w-auto px-8 3xl:px-14 py-4 sm:py-5 3xl:py-7 bg-studio-accent hover:bg-studio-accentHover hover:-translate-y-1 text-white text-sm sm:text-base 3xl:text-2xl font-semibold rounded-none shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
+                    <button onclick="toggleInquiryModal()"
+                        class="w-full sm:w-auto px-8 3xl:px-14 py-4 sm:py-5 3xl:py-7 bg-studio-accent hover:bg-studio-accentHover hover:-translate-y-1 text-white text-sm sm:text-base 3xl:text-2xl font-semibold rounded-none shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
                         Book Strategy Call →
                     </button>
                 </div>
             </div>
 
             <!-- Direct Address & Responsive Directory -->
-            <div class="gsap-reveal grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 3xl:gap-16 text-sm sm:text-base 3xl:text-2xl font-normal text-neutral-400">
+            <div
+                class="gsap-reveal grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 3xl:gap-16 text-sm sm:text-base 3xl:text-2xl font-normal text-neutral-400">
                 <div class="md:col-span-7 space-y-4 3xl:space-y-6">
                     <div class="font-semibold text-base sm:text-lg 3xl:text-3xl text-white">Studio Locations</div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 3xl:gap-8 text-xs sm:text-sm 3xl:text-xl">
                         <div class="space-y-1">
                             <div class="text-emerald-400 font-medium">Vadodara Studio Hub</div>
-                            <p class="leading-relaxed">204 Alkapuri Plaza, R.C. Dutt Road, Alkapuri, Vadodara, Gujarat 390007</p>
+                            <p class="leading-relaxed">204 Alkapuri Plaza, R.C. Dutt Road, Alkapuri, Vadodara, Gujarat
+                                390007</p>
                         </div>
                         <div class="space-y-1">
                             <div class="text-emerald-400 font-medium">Ahmedabad Production Hub</div>
-                            <p class="leading-relaxed">304 Titanium Heights, Corporate Road, Prahlad Nagar, Ahmedabad, Gujarat 380015</p>
+                            <p class="leading-relaxed">304 Titanium Heights, Corporate Road, Prahlad Nagar, Ahmedabad,
+                                Gujarat 380015</p>
                         </div>
                     </div>
-                    <div class="pt-2 flex flex-wrap gap-4 sm:gap-6 3xl:gap-10 text-xs sm:text-sm 3xl:text-xl text-white">
-                        <a href="mailto:hello@socia.in" class="animated-link hover:text-emerald-400 transition-colors">hello@socia.in</a>
-                        <a href="tel:+919876543210" class="animated-link hover:text-emerald-400 transition-colors">+91 98765 43210</a>
+                    <div
+                        class="pt-2 flex flex-wrap gap-4 sm:gap-6 3xl:gap-10 text-xs sm:text-sm 3xl:text-xl text-white">
+                        <a href="mailto:hello@socia.in"
+                            class="animated-link hover:text-emerald-400 transition-colors">hello@socia.in</a>
+                        <a href="tel:+919876543210" class="animated-link hover:text-emerald-400 transition-colors">+91
+                            98765 43210</a>
                     </div>
                 </div>
 
                 <div class="md:col-span-5 flex flex-col md:items-end justify-between space-y-6 md:space-y-0">
-                    <div class="flex flex-wrap gap-4 sm:gap-8 3xl:gap-12 text-xs sm:text-sm 3xl:text-xl text-neutral-300">
+                    <div
+                        class="flex flex-wrap gap-4 sm:gap-8 3xl:gap-12 text-xs sm:text-sm 3xl:text-xl text-neutral-300">
                         <a href="#work" class="animated-link hover:text-white transition-colors">Work</a>
                         <a href="#capabilities" class="animated-link hover:text-white transition-colors">What We Do</a>
                         <a href="#stories" class="animated-link hover:text-white transition-colors">Case Notes</a>
@@ -950,7 +1257,7 @@
                         <a href="#faq" class="animated-link hover:text-white transition-colors">FAQ</a>
                     </div>
                     <div class="text-[11px] sm:text-xs 3xl:text-lg text-neutral-500">
-                        &copy; SOCIA Creative Agency. Paid Media & Reel Production. All rights reserved.
+                        &copy; SOCIA Creative Agency. All rights reserved.
                     </div>
                 </div>
             </div>
@@ -959,61 +1266,81 @@
     </footer>
 
     <!-- Fullscreen 9:16 Video Reel Lightbox Modal -->
-    <div id="video-lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4">
-        <button onclick="closeLightbox()" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white text-xl sm:text-2xl w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-white/10 flex items-center justify-center hover:bg-studio-accent z-50 transition-colors" aria-label="Close Lightbox">
+    <div id="video-lightbox"
+        class="fixed inset-0 z-50 bg-black/95 hidden flex items-center justify-center p-3 sm:p-4">
+        <button onclick="closeLightbox()"
+            class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white text-xl sm:text-2xl w-9 h-9 sm:w-10 sm:h-10 rounded-none bg-white/10 flex items-center justify-center hover:bg-studio-accent z-50 transition-colors"
+            aria-label="Close Lightbox">
             ✕
         </button>
 
-        <div class="max-w-xs sm:max-w-md 3xl:max-w-xl w-full aspect-[9/16] max-h-[80vh] sm:max-h-[85vh] bg-black border border-studio-border relative overflow-hidden flex flex-col justify-between rounded-none shadow-2xl">
+        <div
+            class="max-w-xs sm:max-w-md 3xl:max-w-xl w-full aspect-[9/16] max-h-[80vh] sm:max-h-[85vh] bg-black border border-studio-border relative overflow-hidden flex flex-col justify-between rounded-none shadow-2xl">
             <video id="lightbox-video" class="w-full h-full object-cover" controls autoplay loop playsinline>
                 <source id="lightbox-source" src="" type="video/mp4">
             </video>
 
-            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 to-transparent p-4 sm:p-6 text-white space-y-1 pointer-events-none z-10">
+            <div
+                class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 to-transparent p-4 sm:p-6 text-white space-y-1 pointer-events-none z-10">
                 <h3 class="font-semibold text-lg sm:text-xl 3xl:text-2xl" id="lightbox-title">Campaign Title</h3>
-                <p class="text-xs sm:text-sm 3xl:text-lg text-emerald-400 font-normal" id="lightbox-sub">Campaign Subtitle</p>
+                <p class="text-xs sm:text-sm 3xl:text-lg text-emerald-400 font-normal" id="lightbox-sub">Campaign
+                    Subtitle</p>
             </div>
         </div>
     </div>
 
     <!-- Strategy Call Inquiry Drawer Modal -->
     <div id="inquiry-modal" class="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm hidden">
-        <div class="w-full max-w-lg 3xl:max-w-2xl bg-[#F6F4EF] h-full border-l border-studio-border p-5 sm:p-10 3xl:p-16 overflow-y-auto space-y-6 3xl:space-y-10 relative shadow-2xl">
-            
-            <button onclick="toggleInquiryModal()" class="absolute top-5 right-5 text-studio-muted hover:text-studio-text text-xl sm:text-2xl p-2" aria-label="Close Modal">
+        <div
+            class="w-full max-w-lg 3xl:max-w-2xl bg-[#F6F4EF] h-full border-l border-studio-border p-5 sm:p-10 3xl:p-16 overflow-y-auto space-y-6 3xl:space-y-10 relative shadow-2xl">
+
+            <button onclick="toggleInquiryModal()"
+                class="absolute top-5 right-5 text-studio-muted hover:text-studio-text text-xl sm:text-2xl p-2"
+                aria-label="Close Modal">
                 ✕
             </button>
 
             <div class="space-y-2 pt-2">
                 <div class="flex items-center gap-2">
                     <img src="socia-logo-onlys.png" alt="SOCIA Logo" class="h-5 sm:h-6 3xl:h-9 w-auto object-contain">
-                    <span class="text-xs sm:text-sm 3xl:text-lg font-semibold text-studio-accent">[Direct Contact]</span>
+                    <span class="text-xs sm:text-sm 3xl:text-lg font-semibold text-studio-accent">[Direct
+                        Contact]</span>
                 </div>
                 <h3 class="font-semibold text-xl sm:text-2xl 3xl:text-4xl text-studio-text">Book Strategy Call</h3>
                 <p class="text-xs sm:text-sm 3xl:text-xl text-studio-muted leading-relaxed">
-                    Submit your details. Our team in Vadodara & Ahmedabad will review your account and get in touch within 24 hours.
+                    Submit your details. Our team in Vadodara & Ahmedabad will review your account and get in touch
+                    within 24 hours.
                 </p>
             </div>
 
-            <form onsubmit="handleInquirySubmit(event)" class="space-y-4 sm:space-y-5 3xl:space-y-8 text-sm sm:text-base 3xl:text-xl font-normal">
+            <form onsubmit="handleInquirySubmit(event)"
+                class="space-y-4 sm:space-y-5 3xl:space-y-8 text-sm sm:text-base 3xl:text-xl font-normal">
                 <div>
-                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Your Name</label>
-                    <input type="text" required placeholder="Rajesh Patel" class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
+                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Your
+                        Name</label>
+                    <input type="text" required placeholder="Rajesh Patel"
+                        class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
                 </div>
 
                 <div>
-                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Phone / WhatsApp</label>
-                    <input type="tel" required placeholder="+91 98765 43210" class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
+                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Phone /
+                        WhatsApp</label>
+                    <input type="tel" required placeholder="+91 98765 43210"
+                        class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
                 </div>
 
                 <div>
-                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Brand Name</label>
-                    <input type="text" required placeholder="Janta Ice Cream / Brand Name" class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
+                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Brand
+                        Name</label>
+                    <input type="text" required placeholder="Janta Ice Cream / Brand Name"
+                        class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
                 </div>
 
                 <div>
-                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Primary Goal</label>
-                    <select class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
+                    <label class="block text-studio-muted mb-1.5 text-xs sm:text-sm 3xl:text-lg font-medium">Primary
+                        Goal</label>
+                    <select
+                        class="w-full bg-white border border-studio-border p-3 3xl:p-5 text-studio-text focus:outline-none focus:border-studio-accent text-sm sm:text-base 3xl:text-xl rounded-none">
                         <option>Full Media Strategy (Meta & Google Ads)</option>
                         <option>Meta Ads (Instagram & FB Sales)</option>
                         <option>Google Search & Performance Max</option>
@@ -1021,7 +1348,8 @@
                     </select>
                 </div>
 
-                <button type="submit" class="w-full py-3.5 3xl:py-5 bg-studio-text hover:bg-studio-accent text-white font-medium text-sm sm:text-base 3xl:text-xl mt-2 rounded-none transition-colors">
+                <button type="submit"
+                    class="w-full py-3.5 3xl:py-5 bg-studio-text hover:bg-studio-accent text-white font-medium text-sm sm:text-base 3xl:text-xl mt-2 rounded-none transition-colors">
                     Submit Request
                 </button>
             </form>
@@ -1030,16 +1358,22 @@
     </div>
 
     <!-- Interactive Inspection Drawer Modal -->
-    <div id="sc-inspect-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm hidden p-4">
-        <div class="w-full max-w-lg 3xl:max-w-2xl bg-white border border-studio-border p-5 sm:p-8 3xl:p-12 rounded-none relative space-y-5 sm:space-y-6 3xl:space-y-8 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button onclick="closeSCInspect()" class="absolute top-4 right-4 text-studio-muted hover:text-studio-text text-lg sm:text-xl">✕</button>
+    <div id="sc-inspect-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm hidden p-4">
+        <div
+            class="w-full max-w-lg 3xl:max-w-2xl bg-white border border-studio-border p-5 sm:p-8 3xl:p-12 rounded-none relative space-y-5 sm:space-y-6 3xl:space-y-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeSCInspect()"
+                class="absolute top-4 right-4 text-studio-muted hover:text-studio-text text-lg sm:text-xl">✕</button>
 
             <div class="flex items-center gap-3">
-                <img id="sc-inspect-logo" src="jantaicecreamslogo.png" alt="Client Logo" class="h-7 sm:h-9 3xl:h-14 w-auto object-contain">
-                <span id="sc-inspect-client" class="font-semibold text-lg sm:text-xl 3xl:text-3xl text-studio-text truncate">Client Name</span>
+                <img id="sc-inspect-logo" src="jantaicecreamslogo.png" alt="Client Logo"
+                    class="h-7 sm:h-9 3xl:h-14 w-auto object-contain">
+                <span id="sc-inspect-client"
+                    class="font-semibold text-lg sm:text-xl 3xl:text-3xl text-studio-text truncate">Client Name</span>
             </div>
 
-            <div class="border-y border-studio-border py-4 sm:py-5 3xl:py-8 grid grid-cols-2 gap-4 3xl:gap-8 text-xs sm:text-sm 3xl:text-xl font-normal">
+            <div
+                class="border-y border-studio-border py-4 sm:py-5 3xl:py-8 grid grid-cols-2 gap-4 3xl:gap-8 text-xs sm:text-sm 3xl:text-xl font-normal">
                 <div>
                     <div class="text-studio-dim text-xs 3xl:text-base">Sector</div>
                     <div id="sc-inspect-sector" class="text-studio-text font-medium mt-1">Sector</div>
@@ -1063,14 +1397,16 @@
                 <p id="sc-inspect-notes" class="text-studio-muted leading-relaxed">Notes detail...</p>
             </div>
 
-            <button onclick="closeSCInspect()" class="w-full py-3 3xl:py-5 bg-studio-surface border border-studio-border text-studio-text text-xs sm:text-sm 3xl:text-xl rounded-none hover:bg-studio-border transition-colors">
+            <button onclick="closeSCInspect()"
+                class="w-full py-3 3xl:py-5 bg-studio-surface border border-studio-border text-studio-text text-xs sm:text-sm 3xl:text-xl rounded-none hover:bg-studio-border transition-colors">
                 Close Campaign Card
             </button>
         </div>
     </div>
 
     <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-studio-text text-white border border-studio-border px-4 sm:px-5 3xl:px-8 py-3 sm:py-4 3xl:py-6 text-xs sm:text-sm 3xl:text-xl font-normal hidden flex items-center gap-3 shadow-2xl rounded-none">
+    <div id="toast"
+        class="fixed bottom-5 right-5 z-50 bg-studio-text text-white border border-studio-border px-4 sm:px-5 3xl:px-8 py-3 sm:py-4 3xl:py-6 text-xs sm:text-sm 3xl:text-xl font-normal hidden flex items-center gap-3 shadow-2xl rounded-none">
         <span class="text-emerald-400 font-bold text-base 3xl:text-2xl">✓</span>
         <span id="toast-text" class="truncate">Action completed</span>
     </div>
@@ -1150,7 +1486,7 @@
             },
             {
                 id: 'SC-06',
-                template: 'D',
+                template: 'C',
                 client: 'Shivalik Group',
                 clientLogo: 'shivalikgroupslogo.png',
                 sector: 'Real Estate',
@@ -1164,7 +1500,7 @@
             },
             {
                 id: 'SC-07',
-                template: 'D',
+                template: 'C',
                 client: 'Janta Outlets Campaign',
                 clientLogo: 'jantaicecreamslogo.png',
                 sector: 'Food',
@@ -1262,6 +1598,20 @@
                 grid.appendChild(card);
             });
 
+            // Animate filtered grid items cleanly so they never disappear or stay opacity:0 or blurred
+            if (typeof gsap !== 'undefined') {
+                gsap.fromTo(grid.children, 
+                    { opacity: 0, y: 15 },
+                    { opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out', clearProps: 'transform,filter' }
+                );
+            } else {
+                Array.from(grid.children).forEach(c => {
+                    c.style.opacity = '1';
+                    c.style.transform = 'none';
+                    c.style.filter = 'none';
+                });
+            }
+
             if (typeof ScrollTrigger !== 'undefined') {
                 ScrollTrigger.refresh();
             }
@@ -1323,7 +1673,7 @@
 
             source.src = src;
             video.load();
-            video.play().catch(() => {});
+            video.play().catch(() => { });
 
             titleEl.textContent = title;
             subEl.textContent = sub;
@@ -1359,12 +1709,16 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-icon');
+            const svg = document.getElementById('hamburger-svg');
+            const bar = document.getElementById('bar1');
+            if (!menu) return;
             menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.textContent = '☰';
+            if (!menu.classList.contains('hidden')) {
+                if (bar) bar.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                if (svg) svg.classList.add('rotate-90');
             } else {
-                icon.textContent = '✕';
+                if (bar) bar.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                if (svg) svg.classList.remove('rotate-90');
             }
         }
 
@@ -1387,6 +1741,10 @@
             setTimeout(() => toast.classList.add('hidden'), 3500);
         }
 
+
+
+
+
         /* MASTER GSAP & SCROLLTRIGGER ANIMATION SYSTEM ENGINE */
         function initGSAPAnimations() {
             if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
@@ -1399,16 +1757,16 @@
             heroTl.to('#header', {
                 opacity: 1,
                 y: 0,
-                filter: 'blur(0px)',
-                duration: 0.8
+                duration: 0.8,
+                clearProps: 'transform'
             })
-            .to('.hero-stagger-item', {
-                opacity: 1,
-                y: 0,
-                filter: 'blur(0px)',
-                stagger: 0.14,
-                duration: 1.1
-            }, '-=0.5');
+                .to('.hero-stagger-item', {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.12,
+                    duration: 0.9,
+                    clearProps: 'transform'
+                }, '-=0.5');
 
             /* LEVEL 2 — CINEMATIC SCROLL REVEALS */
             gsap.utils.toArray('.gsap-reveal').forEach((elem) => {
@@ -1420,9 +1778,9 @@
                     },
                     opacity: 1,
                     y: 0,
-                    filter: 'blur(0px)',
-                    duration: 1.1,
-                    ease: 'power3.out'
+                    duration: 0.9,
+                    ease: 'power3.out',
+                    clearProps: 'transform'
                 });
             });
 
@@ -1459,7 +1817,7 @@
                     val: targetVal,
                     duration: 2.2,
                     ease: 'power2.out',
-                    onUpdate: function() {
+                    onUpdate: function () {
                         if (decimals > 0) {
                             counter.textContent = obj.val.toFixed(decimals) + ' ' + suffix;
                         } else {
@@ -1468,32 +1826,6 @@
                     }
                 });
             });
-
-            /* LEVEL 7 — HERO CURSOR PARALLAX TILT */
-            const heroWrapper = document.querySelector('.hero-cursor-wrapper');
-            if (heroWrapper && window.innerWidth > 768) {
-                heroWrapper.addEventListener('mousemove', (e) => {
-                    const rect = heroWrapper.getBoundingClientRect();
-                    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-                    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-
-                    gsap.to(heroWrapper, {
-                        x: x * 8,
-                        y: y * 8,
-                        duration: 0.8,
-                        ease: 'power2.out'
-                    });
-                });
-
-                heroWrapper.addEventListener('mouseleave', () => {
-                    gsap.to(heroWrapper, {
-                        x: 0,
-                        y: 0,
-                        duration: 0.8,
-                        ease: 'power2.out'
-                    });
-                });
-            }
 
             /* LEVEL 9 — WATERMARK PARALLAX DRIFT */
             gsap.utils.toArray('.watermark-text').forEach((wm) => {
@@ -1516,4 +1848,5 @@
         });
     </script>
 </body>
+
 </html>

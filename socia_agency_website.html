@@ -213,16 +213,14 @@
         /* Initial State for GSAP Reveal */
         .hero-stagger-item {
             opacity: 0;
-            transform: translateY(30px);
-            filter: blur(8px);
-            will-change: opacity, transform, filter;
+            transform: translateY(24px);
+            will-change: opacity, transform;
         }
 
         .gsap-reveal {
             opacity: 0;
-            transform: translateY(50px);
-            filter: blur(10px);
-            will-change: opacity, transform, filter;
+            transform: translateY(24px);
+            will-change: opacity, transform;
         }
 
         .gsap-video-reveal {
@@ -232,16 +230,34 @@
             will-change: opacity, transform, clip-path;
         }
 
-        /* Responsive Watermark Background Typography */
+        /* 100% Mobile, Tablet & Desktop Responsive Watermark Background Typography */
         .watermark-text {
-            font-size: clamp(4rem, 14vw, 22rem);
-            font-weight: 800;
-            color: #111215;
-            opacity: 0.03;
+            font-size: clamp(3rem, 11vw, 18rem);
+            font-weight: 900;
+            color: currentColor;
+            opacity: 0.035;
             user-select: none;
             pointer-events: none;
-            line-height: 0.8;
-            letter-spacing: -0.05em;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 100%;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+            .watermark-text {
+                font-size: clamp(2.2rem, 12vw, 4.2rem);
+                opacity: 0.04;
+                letter-spacing: -0.02em;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .watermark-text {
+                font-size: clamp(4rem, 10vw, 8.5rem);
+            }
         }
     </style>
 </head>
@@ -310,7 +326,7 @@
                 
                 <div class="hero-stagger-item flex items-center gap-2.5 sm:gap-3 3xl:gap-4 flex-wrap">
                     <img src="socia-logo-onlys.png" alt="SOCIA Mark" class="h-4 sm:h-5 3xl:h-7 w-auto object-contain">
-                    <span class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">SOCIA Creative Agency · Paid Media & Reel Production · Vadodara & Ahmedabad</span>
+                    <span class="text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">SOCIA Creative Agency · Vadodara & Ahmedabad</span>
                 </div>
 
                 <!-- Line-by-Line Magazine Headline Reveal -->
@@ -637,6 +653,53 @@
                     </div>
                 </div>
 
+                <!-- Story 3: Shivalik Group -->
+                <div class="gsap-reveal bg-studio-bg p-6 sm:p-10 3xl:p-14 space-y-6 3xl:space-y-10 border border-studio-border/40">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-studio-border/60 pb-3 sm:pb-4 text-sm 3xl:text-xl font-normal">
+                        <div class="flex items-center gap-3">
+                            <img src="shivalikgroupslogo.png" alt="Shivalik Group Logo" onclick="inspectCampaign('SC-06')" class="brand-badge h-7 sm:h-8 3xl:h-12 w-auto object-contain">
+                            <span class="font-semibold text-studio-text text-base sm:text-lg 3xl:text-2xl">Shivalik Group</span>
+                        </div>
+                        <span class="text-studio-muted text-xs sm:text-sm 3xl:text-lg">Sector: Real Estate & Commercial</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 3xl:gap-12 items-center">
+                        <div class="lg:col-span-8 space-y-4 3xl:space-y-6">
+                            <h3 class="text-lg sm:text-2xl 3xl:text-4xl font-semibold text-studio-text">Luxury Property Walkthrough Lead Gen</h3>
+                            <p class="text-sm sm:text-base 3xl:text-2xl text-studio-muted leading-relaxed font-normal">
+                                4K vertical walkthrough video campaigns showcasing luxury commercial developments, targeting high-net-worth investor demographics across Gujarat.
+                            </p>
+
+                            <div class="grid grid-cols-3 gap-2 sm:gap-4 3xl:gap-8 pt-2 text-xs sm:text-sm 3xl:text-xl font-normal">
+                                <div>
+                                    <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Channels</div>
+                                    <div class="text-studio-text font-medium mt-1">Google & Meta Ads</div>
+                                </div>
+                                <div>
+                                    <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">ROAS</div>
+                                    <div class="counter-stat text-studio-text font-semibold mt-1" data-target="3.8" data-suffix="x ROAS" data-decimals="1">0</div>
+                                </div>
+                                <div>
+                                    <div class="text-studio-dim text-[11px] sm:text-xs 3xl:text-base">Result</div>
+                                    <div class="counter-stat text-studio-accent font-semibold mt-1" data-target="840" data-suffix="+ Investor Leads" data-decimals="0">0</div>
+                                    <span class="text-[9px] sm:text-[10px] 3xl:text-sm text-emerald-700 font-medium block">[Verified · Site Visits]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-4 flex justify-center">
+                            <div class="w-full max-w-[200px] sm:max-w-[220px] 3xl:max-w-[300px] aspect-[9/16] bg-black rounded-none overflow-hidden relative cursor-pointer group" onclick="openLightbox('shivalikgroups.mp4', 'Shivalik Group', 'Luxury Property Walkthrough Campaign')">
+                                <video class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoplay loop muted playsinline preload="auto">
+                                    <source src="shivalikgroups.mp4" type="video/mp4">
+                                </video>
+                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-studio-accent/80 transition-colors">
+                                    <span class="text-white text-sm 3xl:text-xl font-medium">Watch →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -943,11 +1006,12 @@
 
                 <div class="md:col-span-5 flex flex-col md:items-end justify-between space-y-6 md:space-y-0">
                     <div class="flex flex-wrap gap-4 sm:gap-8 3xl:gap-12 text-xs sm:text-sm 3xl:text-xl text-neutral-300">
-                        <a href="#work" class="animated-link hover:text-white transition-colors">Work</a>
-                        <a href="#capabilities" class="animated-link hover:text-white transition-colors">What We Do</a>
-                        <a href="#stories" class="animated-link hover:text-white transition-colors">Case Notes</a>
-                        <a href="#process" class="animated-link hover:text-white transition-colors">Process</a>
-                        <a href="#faq" class="animated-link hover:text-white transition-colors">FAQ</a>
+                        <a href="work.html" class="animated-link hover:text-white transition-colors">Work</a>
+                        <a href="services.html" class="animated-link hover:text-white transition-colors">Services</a>
+                        <a href="process.html" class="animated-link hover:text-white transition-colors">Process</a>
+                        <a href="clients.html" class="animated-link hover:text-white transition-colors">Clients</a>
+                        <a href="studios.html" class="animated-link hover:text-white transition-colors">Studios</a>
+                        <a href="about.html" class="animated-link hover:text-white transition-colors">About</a>
                     </div>
                     <div class="text-[11px] sm:text-xs 3xl:text-lg text-neutral-500">
                         &copy; SOCIA Creative Agency. Paid Media & Reel Production. All rights reserved.
@@ -1262,6 +1326,20 @@
                 grid.appendChild(card);
             });
 
+            // Animate filtered grid items cleanly so they never disappear or stay opacity:0 or blurred
+            if (typeof gsap !== 'undefined') {
+                gsap.fromTo(grid.children, 
+                    { opacity: 0, y: 15 },
+                    { opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out', clearProps: 'transform,filter' }
+                );
+            } else {
+                Array.from(grid.children).forEach(c => {
+                    c.style.opacity = '1';
+                    c.style.transform = 'none';
+                    c.style.filter = 'none';
+                });
+            }
+
             if (typeof ScrollTrigger !== 'undefined') {
                 ScrollTrigger.refresh();
             }
@@ -1399,15 +1477,15 @@
             heroTl.to('#header', {
                 opacity: 1,
                 y: 0,
-                filter: 'blur(0px)',
-                duration: 0.8
+                duration: 0.8,
+                clearProps: 'transform'
             })
             .to('.hero-stagger-item', {
                 opacity: 1,
                 y: 0,
-                filter: 'blur(0px)',
-                stagger: 0.14,
-                duration: 1.1
+                stagger: 0.12,
+                duration: 0.9,
+                clearProps: 'transform'
             }, '-=0.5');
 
             /* LEVEL 2 — CINEMATIC SCROLL REVEALS */
@@ -1420,9 +1498,9 @@
                     },
                     opacity: 1,
                     y: 0,
-                    filter: 'blur(0px)',
-                    duration: 1.1,
-                    ease: 'power3.out'
+                    duration: 0.9,
+                    ease: 'power3.out',
+                    clearProps: 'transform'
                 });
             });
 

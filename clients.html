@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#F6F4EF] text-[#111215]">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Client Partnerships & Roster — SOCIA Creative Agency</title>
+
+    <link rel="icon" type="image/png" href="socia-logo-onlys.png">
+    <meta name="description"
+        content="Trusted by leading Gujarat consumer brands including Honest Restaurant, Asopalav Silks, Wagh Bakri Tea Group, Shivalik Group, and Kheteshwar Sweets.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body class="selection:bg-studio-accent selection:text-white relative min-h-screen">
+
+    <!-- State-of-the-Art Mobile-First & Desktop Responsive Navbar Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-[#F6F4EF]/90 backdrop-blur-xl border-b border-studio-border/70 shadow-sm transition-all duration-300"
+        id="header">
+        <div
+            class="max-w-[1400px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 3xl:h-24 flex items-center justify-between">
+
+            <a href="index.html" class="flex items-center gap-3 group shrink-0">
+                <img src="socia-logo-onlys.png" alt="SOCIA Logo"
+                    class="h-7 sm:h-9 3xl:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <div class="flex items-center gap-2">
+                    <span
+                        class="font-bold text-lg sm:text-xl 3xl:text-2xl tracking-wider text-studio-text leading-none">SOCIA</span>
+                    <span
+                        class="hidden sm:inline-block text-[9px] 3xl:text-xs font-mono font-semibold uppercase tracking-widest bg-studio-accent text-white px-1.5 py-0.5">AGENCY</span>
+                </div>
+            </a>
+
+            <nav
+                class="hidden lg:flex items-center gap-6 xl:gap-8 3xl:gap-12 text-sm xl:text-base 3xl:text-xl font-medium text-studio-muted">
+                <a href="work.html"
+                    class="animated-link hover:text-studio-text transition-colors">Work</a>
+                <a href="services.html" class="animated-link hover:text-studio-text transition-colors">Services</a>
+                <a href="process.html" class="animated-link hover:text-studio-text transition-colors">Process</a>
+                <a href="clients.html"
+                    class="animated-link text-studio-text font-semibold underline decoration-studio-accent decoration-2 underline-offset-4">Clients</a>
+                <a href="studios.html" class="animated-link hover:text-studio-text transition-colors">Studios</a>
+                <a href="about.html" class="animated-link hover:text-studio-text transition-colors">About</a>
+            </nav>
+
+            <div class="flex items-center gap-2.5 sm:gap-4">
+                <button onclick="toggleInquiryModal()"
+                    class="px-4 sm:px-6 3xl:px-8 py-2 sm:py-2.5 3xl:py-3.5 bg-studio-text text-white hover:bg-studio-accent hover:-translate-y-0.5 text-xs sm:text-sm 3xl:text-lg font-medium shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-1.5">
+                    <span>Book Call</span>
+                    <span class="text-emerald-400 font-bold hidden xs:inline">→</span>
+                </button>
+
+                <button onclick="toggleMobileMenu()"
+                    class="lg:hidden px-2.5 py-2 border border-studio-border/80 text-studio-text hover:bg-studio-surface transition-colors flex items-center gap-2 rounded-none"
+                    aria-label="Toggle Menu">
+                    <span
+                        class="text-xs font-mono font-medium uppercase tracking-wider text-studio-muted hidden xs:inline">Menu</span>
+                    <svg id="hamburger-svg" class="w-5 h-5 transition-transform duration-300" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="bar1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden lg:hidden bg-studio-panel/98 backdrop-blur-2xl border-b border-studio-border shadow-2xl px-5 sm:px-8 py-6 space-y-4 text-base font-normal">
+            <div
+                class="text-xs font-mono font-semibold uppercase tracking-widest text-studio-accent border-b border-studio-border/50 pb-2 flex justify-between">
+                <span>[Studio Navigation]</span>
+                <span>Vadodara · Ahmedabad</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium text-studio-text pt-1">
+                <a href="work.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>01 / Work & Campaigns</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="services.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>02 / Services & Capabilities</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="process.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>03 / 4-Step Studio Process</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="clients.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>04 / Client Partnerships</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="studios.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>05 / Studios & Locations</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+                <a href="about.html"
+                    class="flex items-center justify-between p-3 bg-studio-bg hover:bg-studio-surface border border-studio-border/40 transition-colors">
+                    <span>06 / About SOCIA Agency</span>
+                    <span class="text-studio-accent">→</span>
+                </a>
+            </div>
+
+            <div
+                class="pt-3 border-t border-studio-border/50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div class="text-xs text-studio-muted font-mono">
+                    Direct Inquiry: <a href="mailto:hello@socia.in"
+                        class="text-studio-text underline font-medium">hello@socia.in</a>
+                </div>
+                <button onclick="toggleMobileMenu(); toggleInquiryModal()"
+                    class="w-full sm:w-auto px-6 py-3 bg-studio-accent text-white font-medium text-xs uppercase tracking-wider shadow-sm hover:bg-studio-accentHover transition-colors flex items-center justify-center gap-2">
+                    <span>Book Strategy Call</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-20 relative overflow-hidden">
+        <div class="absolute top-10 left-10 watermark-text select-none z-0">
+            PARTNERS
+        </div>
+
+        <div
+            class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 relative z-10 space-y-4 sm:space-y-6">
+            <div class="gsap-reveal text-xs sm:text-sm 3xl:text-xl font-normal text-studio-muted">
+                [Client Roster & Partnerships]
+            </div>
+            <h1
+                class="gsap-reveal text-3xl sm:text-5xl lg:text-6xl 3xl:text-8xl font-semibold text-studio-text max-w-4xl tracking-tight leading-tight">
+                Empowering Gujarat's Leading Consumer Brands
+            </h1>
+            <p class="gsap-reveal text-sm sm:text-base lg:text-lg 3xl:text-2xl text-studio-muted max-w-3xl leading-relaxed font-normal">
+                From iconic food institutions in Vadodara to premier textile houses in Ahmedabad, we produce the reels
+                and buy the media that keeps store registers ringing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Client Roster Showcase Grid -->
+    <section class="py-12 sm:py-20 bg-white border-t border-studio-border/60">
+        <div
+            class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+            <div
+                class="gsap-reveal bg-studio-panel border border-studio-border/50 p-6 sm:p-8 3xl:p-10 space-y-6 shadow-sm hover:border-studio-accent transition-all duration-300">
+                <div class="flex items-center justify-between border-b border-studio-border/50 pb-4">
+                    <img src="honestrestaurantlogo.png" alt="Honest Restaurant" class="h-10 sm:h-12 w-auto object-contain">
+                    <span class="text-[10px] sm:text-xs 3xl:text-base font-mono text-studio-accent font-medium">5.8x ROAS</span>
+                </div>
+                <h3 class="text-base sm:text-xl 3xl:text-2xl font-semibold text-studio-text">Honest Restaurant Group</h3>
+                <blockquote class="text-xs sm:text-sm 3xl:text-xl text-studio-muted italic leading-relaxed font-normal">
+                    "SOCIA's 9:16 vertical street food reels created massive store buzz across our Alkapuri and Prahlad
+                    Nagar outlets. The footfall growth was immediate."
+                </blockquote>
+                <div class="pt-4 border-t border-studio-border/50 text-[11px] sm:text-xs 3xl:text-base font-mono text-studio-muted">
+                    Partner Category: Food & Hospitality · Vadodara & Ahmedabad
+                </div>
+            </div>
+
+            <div
+                class="gsap-reveal bg-studio-panel border border-studio-border/50 p-6 sm:p-8 3xl:p-10 space-y-6 shadow-sm hover:border-studio-accent transition-all duration-300">
+                <div class="flex items-center justify-between border-b border-studio-border/50 pb-4">
+                    <img src="asopalavsilkslogo.png" alt="Asopalav Silks" class="h-10 sm:h-12 w-auto object-contain">
+                    <span class="text-[10px] sm:text-xs 3xl:text-base font-mono text-studio-accent font-medium">4.9x ROAS</span>
+                </div>
+                <h3 class="text-base sm:text-xl 3xl:text-2xl font-semibold text-studio-text">Asopalav Silk Sarees</h3>
+                <blockquote class="text-xs sm:text-sm 3xl:text-xl text-studio-muted italic leading-relaxed font-normal">
+                    "The color grading and texture shoots captured the true richness of our pure silk sarees. Their
+                    targeted Meta ad sets drove high-intent NRI brides."
+                </blockquote>
+                <div class="pt-4 border-t border-studio-border/50 text-[11px] sm:text-xs 3xl:text-base font-mono text-studio-muted">
+                    Partner Category: Fashion & Silks · Ahmedabad & Surat
+                </div>
+            </div>
+
+            <div
+                class="gsap-reveal bg-studio-panel border border-studio-border/50 p-6 sm:p-8 3xl:p-10 space-y-6 shadow-sm hover:border-studio-accent transition-all duration-300">
+                <div class="flex items-center justify-between border-b border-studio-border/50 pb-4">
+                    <img src="waghbakerigroupslogo.png" alt="Wagh Bakri Tea" class="h-10 sm:h-12 w-auto object-contain">
+                    <span class="text-[10px] sm:text-xs 3xl:text-base font-mono text-studio-accent font-medium">6.2x ROAS</span>
+                </div>
+                <h3 class="text-base sm:text-xl 3xl:text-2xl font-semibold text-studio-text">Wagh Bakri Tea Group</h3>
+                <blockquote class="text-xs sm:text-sm 3xl:text-xl text-studio-muted italic leading-relaxed font-normal">
+                    "Authentic Gujarati storytelling that resonated across generations. SOCIA seamlessly managed both
+                    creative production and regional performance ads."
+                </blockquote>
+                <div class="pt-4 border-t border-studio-border/50 text-[11px] sm:text-xs 3xl:text-base font-mono text-studio-muted">
+                    Partner Category: FMCG & Beverages · Pan-Gujarat
+                </div>
+            </div>
+
+            <div
+                class="gsap-reveal bg-studio-panel border border-studio-border/50 p-6 sm:p-8 3xl:p-10 space-y-6 shadow-sm hover:border-studio-accent transition-all duration-300">
+                <div class="flex items-center justify-between border-b border-studio-border/50 pb-4">
+                    <img src="shivalikgroupslogo.png" alt="Shivalik Group" class="h-10 sm:h-12 w-auto object-contain">
+                    <span class="text-[10px] sm:text-xs 3xl:text-base font-mono text-studio-accent font-medium">3.8x ROAS</span>
+                </div>
+                <h3 class="text-base sm:text-xl 3xl:text-2xl font-semibold text-studio-text">Shivalik Group</h3>
+                <blockquote class="text-xs sm:text-sm 3xl:text-xl text-studio-muted italic leading-relaxed font-normal">
+                    "High-end 4K vertical walkthroughs of our luxury commercial projects. Generated verified
+                    high-net-worth investor inquiries across Ahmedabad."
+                </blockquote>
+                <div class="pt-4 border-t border-studio-border/50 text-[11px] sm:text-xs 3xl:text-base font-mono text-studio-muted">
+                    Partner Category: Real Estate · Corporate Road, Ahmedabad
+                </div>
+            </div>
+
+            <div
+                class="gsap-reveal bg-studio-panel border border-studio-border/50 p-6 sm:p-8 3xl:p-10 space-y-6 shadow-sm hover:border-studio-accent transition-all duration-300">
+                <div class="flex items-center justify-between border-b border-studio-border/50 pb-4">
+                    <img src="kheteshwarsweetslogo.png" alt="Kheteshwar Sweets" class="h-10 sm:h-12 w-auto object-contain">
+                    <span class="text-[10px] sm:text-xs 3xl:text-base font-mono text-studio-accent font-medium">5.2x ROAS</span>
+                </div>
+                <h3 class="text-base sm:text-xl 3xl:text-2xl font-semibold text-studio-text">Kheteshwar Sweets</h3>
+                <blockquote class="text-xs sm:text-sm 3xl:text-xl text-studio-muted italic leading-relaxed font-normal">
+                    "Our Diwali mithai pre-orders broke records. The Click-to-WhatsApp ad funnel converted hungry
+                    customers with zero friction."
+                </blockquote>
+                <div class="pt-4 border-t border-studio-border/50 text-[11px] sm:text-xs 3xl:text-base font-mono text-studio-muted">
+                    Partner Category: Sweets & Retail · Vadodara & Anand
+                </div>
+            </div>
+
+            <div
+                class="gsap-reveal bg-studio-panel border border-studio-border/50 p-6 sm:p-8 3xl:p-10 space-y-6 shadow-sm hover:border-studio-accent transition-all duration-300">
+                <div class="flex items-center justify-between border-b border-studio-border/50 pb-4">
+                    <img src="jantaicecreamslogo.png" alt="Janta Ice Creams" class="h-10 sm:h-12 w-auto object-contain">
+                    <span class="text-[10px] sm:text-xs 3xl:text-base font-mono text-studio-accent font-medium">4.6x ROAS</span>
+                </div>
+                <h3 class="text-base sm:text-xl 3xl:text-2xl font-semibold text-studio-text">Janta Ice Creams</h3>
+                <blockquote class="text-xs sm:text-sm 3xl:text-xl text-studio-muted italic leading-relaxed font-normal">
+                    "High-energy summer reel reels paired with evening geo-fenced mobile ads drove long queues outside
+                    our scoop parlors."
+                </blockquote>
+                <div class="pt-4 border-t border-studio-border/50 text-[11px] sm:text-xs 3xl:text-base font-mono text-studio-muted">
+                    Partner Category: Food & Desserts · Gujarat Retail Outlets
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="py-16 sm:py-24 bg-studio-text text-white text-center">
+        <div class="max-w-3xl mx-auto px-4 space-y-6">
+            <h2 class="text-3xl sm:text-5xl font-bold">Join Gujarat's High-Growth Brand Roster</h2>
+            <p class="text-studio-dim text-sm sm:text-lg">Let's craft your brand's next viral 9:16 vertical reel
+                campaign.</p>
+            <button onclick="toggleInquiryModal()"
+                class="px-8 py-4 bg-studio-accent hover:bg-studio-accentHover text-white font-semibold text-base transition-all">
+                Book Partner Strategy Call →
+            </button>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="inquiry-modal"
+        class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-studio-panel max-w-lg w-full p-6 sm:p-8 relative border border-studio-border space-y-4">
+            <button onclick="toggleInquiryModal()"
+                class="absolute top-4 right-4 text-studio-muted text-xl font-bold">&times;</button>
+            <h3 class="text-xl sm:text-2xl font-bold text-studio-text">Book a Growth Strategy Session</h3>
+            <form onsubmit="handleModalSubmit(event)" class="space-y-3 pt-2">
+                <input type="text" placeholder="Brand / Company Name *" required
+                    class="w-full px-3.5 py-2.5 border text-sm outline-none">
+                <input type="tel" placeholder="Phone Number (WhatsApp) *" required
+                    class="w-full px-3.5 py-2.5 border text-sm outline-none">
+                <button type="submit" class="w-full py-3 bg-studio-accent text-white font-semibold text-sm">Request
+                    Callback →</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCENE: FOOTER -->
+    <footer class="py-16 sm:py-24 3xl:py-36 bg-[#111215] text-white relative overflow-hidden">
+
+        <!-- Background Watermark -->
+        <div class="absolute bottom-2 sm:bottom-5 left-4 sm:left-10 watermark-text select-none text-white/5 z-0 max-w-full overflow-hidden">
+            SOCIA
+        </div>
+
+        <div
+            class="max-w-[1360px] 2xl:max-w-[1600px] 3xl:max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 3xl:px-16 space-y-12 sm:space-y-16 3xl:space-y-24 relative z-10">
+
+            <!-- Closing Headline & Responsive Action -->
+            <div
+                class="gsap-reveal grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 3xl:gap-16 items-end border-b border-white/15 pb-12 sm:pb-16 3xl:pb-24">
+                <div class="lg:col-span-8 space-y-4 3xl:space-y-6">
+                    <div class="flex items-center gap-3">
+                        <img src="socia-logo-onlys.png" alt="SOCIA Logo"
+                            class="h-7 sm:h-8 3xl:h-12 w-auto object-contain">
+                        <span
+                            class="text-xs sm:text-sm 3xl:text-xl text-emerald-400 font-medium tracking-wider uppercase">SOCIA
+                            CREATIVE AGENCY · VADODARA & AHMEDABAD</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl lg:text-6xl 3xl:text-8xl font-semibold leading-tight text-white">
+                        Ready to scale your store footfalls and paid media revenue?
+                    </h2>
+                </div>
+                <div class="lg:col-span-4 flex lg:justify-end">
+                    <button onclick="toggleInquiryModal()"
+                        class="w-full sm:w-auto px-8 3xl:px-14 py-4 sm:py-5 3xl:py-7 bg-studio-accent hover:bg-studio-accentHover hover:-translate-y-1 text-white text-sm sm:text-base 3xl:text-2xl font-semibold rounded-none shadow-lg hover:shadow-2xl transition-all duration-300 text-center">
+                        Book Strategy Call →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Direct Address & Responsive Directory -->
+            <div
+                class="gsap-reveal grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 3xl:gap-16 text-sm sm:text-base 3xl:text-2xl font-normal text-neutral-400">
+                <div class="md:col-span-7 space-y-4 3xl:space-y-6">
+                    <div class="font-semibold text-base sm:text-lg 3xl:text-3xl text-white">Studio Locations</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 3xl:gap-8 text-xs sm:text-sm 3xl:text-xl">
+                        <div class="space-y-1">
+                            <div class="text-emerald-400 font-medium">Vadodara Studio Hub</div>
+                            <p class="leading-relaxed">204 Alkapuri Plaza, R.C. Dutt Road, Alkapuri, Vadodara, Gujarat 390007</p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-emerald-400 font-medium">Ahmedabad Production Hub</div>
+                            <p class="leading-relaxed">304 Titanium Heights, Corporate Road, Prahlad Nagar, Ahmedabad, Gujarat 380015</p>
+                        </div>
+                    </div>
+                    <div
+                        class="pt-2 flex flex-wrap gap-4 sm:gap-6 3xl:gap-10 text-xs sm:text-sm 3xl:text-xl text-white">
+                        <a href="mailto:hello@socia.in"
+                            class="animated-link hover:text-emerald-400 transition-colors">hello@socia.in</a>
+                        <a href="tel:+919876543210" class="animated-link hover:text-emerald-400 transition-colors">+91 98765 43210</a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5 flex flex-col md:items-end justify-between space-y-6 md:space-y-0">
+                    <div
+                        class="flex flex-wrap gap-4 sm:gap-8 3xl:gap-12 text-xs sm:text-sm 3xl:text-xl text-neutral-300">
+                        <a href="work.html" class="animated-link hover:text-white transition-colors">Work</a>
+                        <a href="services.html" class="animated-link hover:text-white transition-colors">Services</a>
+                        <a href="process.html" class="animated-link hover:text-white transition-colors">Process</a>
+                        <a href="clients.html" class="animated-link hover:text-white transition-colors">Clients</a>
+                        <a href="studios.html" class="animated-link hover:text-white transition-colors">Studios</a>
+                        <a href="about.html" class="animated-link hover:text-white transition-colors">About</a>
+                    </div>
+                    <div class="text-[11px] sm:text-xs 3xl:text-lg text-neutral-500">
+                        &copy; SOCIA Creative Agency. All rights reserved.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        function toggleInquiryModal() { document.getElementById('inquiry-modal').classList.toggle('hidden'); }
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const svg = document.getElementById('hamburger-svg');
+            const bar = document.getElementById('bar1');
+            if (!menu) return;
+            menu.classList.toggle('hidden');
+            if (!menu.classList.contains('hidden')) {
+                if (bar) bar.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                if (svg) svg.classList.add('rotate-90');
+            } else {
+                if (bar) bar.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                if (svg) svg.classList.remove('rotate-90');
+            }
+        }
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            alert('Strategy session requested! SOCIA team will contact you shortly.');
+            toggleInquiryModal();
+        }
+    </script>
+</body>
+
+</html>
